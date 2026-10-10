@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mamá China - Parrillas & Broaster</title>
+  <style>
+    :root {
+      --primary: #f59e0b;
+      --bg: #0b0f19;
+      --card: #161f30;
+      --border: #233048;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 14px 60px;
+    }
+    .app {
+      width: 100%;
+      max-width: 440px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    /* Encabezado */
+    .header {
+      text-align: center;
+      padding: 12px 0 6px;
+    }
+    .badge-logo {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 10px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #e11d48, #be123c);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 18px rgba(225, 29, 72, 0.4);
+      border: 2px solid #fda4af;
+    }
+    .badge-logo span:first-child { font-size: 0.85rem; font-weight: 700; line-height: 1; }
+    .badge-logo span:last-child { font-size: 1.15rem; font-weight: 900; letter-spacing: 0.5px; }
+    h1 { font-size: 1.5rem; font-weight: 800; }
+    .sub { font-size: 0.88rem; color: #fb7185; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+    .addr { font-size: 0.82rem; color: var(--muted); margin-top: 4px; }
+
+    /* Botón Google 5 Estrellas */
+    .btn-review {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #000;
+      font-weight: 800;
+      padding: 15px;
+      border-radius: 14px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35);
+      border: 1px solid #fde68a;
+    }
+
+    /* Acciones Rápidas */
+    .quick-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .btn-action {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 12px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .btn-ws { border-color: #22c55e; color: #4ade80; }
+
+    /* Secciones de la Carta */
+    .menu-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 6px;
+    }
+    .section-desc { font-size: 0.78rem; color: var(--muted); margin-top: -8px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed #223249;
+    }
+    .item:last-child { border-bottom: none; padding-bottom: 0; }
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .item-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.25;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #64748b;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <!-- CABECERA -->
+    <div class="header">
+      <div class="badge-logo">
+        <span>MAMÁ</span>
+        <span>CHINA</span>
+      </div>
+      <h1>Mamá China</h1>
+      <div class="sub">Parrillas & Broaster</div>
+      <div class="addr">Av. Andrés Avelino Cáceres • Ate, Lima</div>
+    </div>
+
+    <!-- 1. RESEÑAS DIRECTAS -->
+    <a href="https://search.google.com/local/writereview?placeid=ChIJ0eaOETHpBZERXc7I2hsHdRU" class="btn-review" target="_blank">
+      ⭐ Califícanos con 5 Estrellas
+    </a>
+
+    <!-- ACCIONES RÁPIDAS -->
+    <div class="quick-actions">
+      <!-- Reemplace el número 51900000000 por el WhatsApp de su tío -->
+      <a href="https://wa.me/51900000000?text=Hola%20Mamá%20China,%20deseo%20hacer%20un%20pedido" class="btn-action btn-ws" target="_blank">
+        💬 Pedir al WhatsApp
+      </a>
+      <a href="https://maps.app.goo.gl/Ziy3BWey4b6fs8Mf8" class="btn-action" target="_blank">
+        📍 Cómo Llegar
+      </a>
+    </div>
+
+    <!-- SECCIÓN 1: COMBOS PARRILLEROS -->
+    <div class="menu-title">🔥 Combos Parrilleros</div>
+    <div class="section-desc">Vienen acompañados con papas fritas, arroz y ensalada.</div>
+    <div class="card">
+      <div class="item">
+        <div class="item-header"><span>Combo 1</span></div>
+        <div class="item-desc">Pechuga a la parrilla + 1 palito de anticucho + papas fritas + arroz + ensalada.</div>
+      </div>
+      <div class="item">
+        <div class="item-header"><span>Combo 2</span></div>
+        <div class="item-desc">Chuleta o mollejita a la parrilla + 1 palito de anticucho + 1 chorizo artesanal + papas + arroz + ensalada.</div>
+      </div>
+      <div class="item">
+        <div class="item-header"><span>Combo 3</span></div>
+        <div class="item-desc">Pierna deshuesada + mollejitas + 1 palito de anticucho + chorizo artesanal + papas + arroz + ensalada.</div>
+      </div>
+      <div class="item">
+        <div class="item-header"><span>Combo 4</span></div>
+        <div class="item-desc">Churrasco o anticucho + rachi + chorizo artesanal + 1 hotdog + papas + arroz + ensalada.</div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN 2: PARRILLAS & BROASTER -->
+    <div class="menu-title">🍗 Parrillas & Broaster</div>
+    <div class="section-desc">Servidos con papas fritas, arroz y ensalada fresca.</div>
+    <div class="card">
+      <div class="item">
+        <div class="item-header"><span>Parrillas Personales</span></div>
+        <div class="item-desc">Mollejita • Deshuesada • Pechuga • Chuleta • Anticucho • Churrasco • Rachi.</div>
+      </div>
+      <div class="item">
+        <div class="item-header"><span>Pollo Broaster Crujiente</span></div>
+        <div class="item-desc">Ala • Pierna • Muslo • Pecho (con papas fritas, arroz y ensalada).</div>
+      </div>
+      <div class="item">
+        <div class="item-header"><span>Alitas Acevichadas (18)</span></div>
+        <div class="item-desc">Porción de alitas bañadas en salsa acevichada artesanal.</div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN 3: SALCHIPAPAS -->
+    <div class="menu-title">🍟 Salchipapas</div>
+    <div class="card">
+      <div class="item">
+        <div class="item-header"><span>Clásica</span></div>
+        <div class="item-desc">Hotdog ahumado + papas fritas.</div>
+      </div>
+      <div class="item">
+        <div class="item-header"><span>Especial</span></div>
+        <div class="item-desc">Hotdog ahumado + huevo montado + papas fritas.</div>
+      </div>
+      <div class="item">
+        <div class="item-header"><span>Choripapas</span></div>
+        <div class="item-desc">Chorizo parrillero + papas fritas.</div>
+      </div>
+      <div class="item">
+        <div class="item-header"><span>A lo Pobre</span></div>
+        <div class="item-desc">Hotdog ahumado + huevo + plátano frito + papas.</div>
+      </div>
+      <div class="item">
+        <div class="item-header"><span>Salchicucho</span></div>
+        <div class="item-desc">Hotdog ahumado + trozos de anticucho de res + papas fritas.</div>
+      </div>
+      <div class="item">
+        <div class="item-header"><span>Mamá China</span></div>
+        <div class="item-desc">Hotdog ahumado + huevo + plátano + carne de hamburguesa + papas.</div>
+      </div>
+      <div class="item">
+        <div class="item-header"><span>China Power</span></div>
+        <div class="item-desc">Hotdog ahumado + huevo + plátano + carne + alita broaster + papas.</div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN 4: HAMBURGUESAS ARTESANALES -->
+    <div class="menu-title">🍔 Hamburguesas Artesanales</div>
+    <div class="section-desc">Todas servidas con papas fritas y ensalada.</div>
+    <div class="card">
+      <div class="item">
+        <div class="item-header"><span>Clásica / Americana</span></div>
+        <div class="item-desc">Carne artesanal (con queso en versión americana) + papas + ensalada.</div>
+      </div>
+      <div class="item">
+        <div class="item-header"><span>Royal</span></div>
+        <div class="item-desc">Carne artesanal + queso + jamón + huevo + papas + ensalada.</div>
+      </div>
+      <div class="item">
+        <div class="item-header"><span>A lo Pobre</span></div>
+        <div class="item-desc">Carne artesanal + queso + jamón + huevo + plátano + papas + ensalada.</div>
+      </div>
+      <div class="item">
+        <div class="item-header"><span>Burger Crispi</span></div>
+        <div class="item-desc">Pollo broaster crujiente + papas + ensalada.</div>
+      </div>
+      <div class="item">
+        <div class="item-header"><span>Chinaburguer (La Especial)</span></div>
+        <div class="item-desc">Carne artesanal + queso + jamón + huevo + tocino ahumado + papas + ensalada.</div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN 5: BEBIDAS & ADICIONALES -->
+    <div class="menu-title">🥤 Bebidas & Adicionales</div>
+    <div class="card">
+      <div class="item">
+        <div class="item-header"><span>Refrescos & Infusiones</span></div>
+        <div class="item-desc">Chicha morada • Maracuyá • Limonada • Té • Anís • Manzanilla • Café • Vino.</div>
+      </div>
+      <div class="item">
+        <div class="item-header"><span>Gaseosas & Cervezas</span></div>
+        <div class="item-desc">Inca Kola / Coca Cola (Personal, Gordita, 1L, 1.5L, 2L, 3L) • Pilsen • Negra • Trigo.</div>
+      </div>
+      <div class="item">
+        <div class="item-header"><span>Porciones Adicionales</span></div>
+        <div class="item-desc">Hotdog • Arroz • Chorizo • Palito de Anticucho • Papas fritas.</div>
+      </div>
+    </div>
+
+    <footer>
+      Mamá China • Carta Digital NFC 24/7
+    </footer>
+  </div>
+</body>
+</html>
