@@ -17,7 +17,7 @@ h1{font-size:clamp(2.5rem,8vw,5rem);line-height:1.02;margin:14px 0;color:#fff;te
 .num{display:block;font-size:clamp(2rem,7vw,3.8rem);font-variant-numeric:tabular-nums;font-weight:800;line-height:1.1;color:white}.unit{display:block;margin-top:8px;color:var(--muted);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}#status{text-align:center;color:var(--muted);font-size:.9rem;margin-top:15px}.progress{height:7px;background:#ffffff18;border-radius:20px;overflow:hidden;margin-top:22px}#bar{height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--gold));border-radius:20px;transition:width .5s}
 .section-title{font-size:1.5rem;margin:0 0 8px}.sub{color:var(--muted);line-height:1.6;margin-top:0}.question-list{display:grid;gap:12px;margin-top:20px}.q{border:1px solid #ffffff20;background:#ffffff08;border-radius:17px;padding:16px 18px}.qhead{display:flex;align-items:center;gap:12px}.hour{flex-shrink:0;width:43px;height:43px;border-radius:50%;display:grid;place-items:center;background:#ff8fb11c;border:1px solid #ff8fb155;color:var(--pink);font-weight:800}.qtitle{font-weight:750}.qtime{font-size:.78rem;color:var(--muted);margin-top:3px}.qbody{padding:13px 0 0 55px;color:#f8eefa;line-height:1.6}.qbody p{margin:0 0 10px}
 input[type=text],textarea,select{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #ffffff30;background:#120b25;color:white;font:inherit;outline:none}textarea{min-height:76px;resize:vertical}input[type=text]:focus,textarea:focus,select:focus{border-color:var(--pink)}button{font:inherit;font-weight:750;cursor:pointer;border:0;border-radius:12px;padding:11px 16px;color:#29122f;background:linear-gradient(120deg,var(--pink),var(--gold));margin-top:10px}button:focus-visible{outline:3px solid white;outline-offset:3px}.answer{color:var(--gold);font-size:.9rem;margin-top:9px;min-height:1.2em}.locked{opacity:.65}.lock-note{font-size:.88rem;color:var(--muted);margin:13px 0 0}.letter{text-align:center}.heart{font-size:2rem;animation:pulse 1.8s infinite}footer{text-align:center;color:#b9a8cc;font-size:.8rem;padding:15px}.hint{margin-top:12px;color:var(--gold)}.hint summary{cursor:pointer}
-#editor-card{display:none;border-color:#ff8fb166;background:#1d1233f2}body.admin-mode #editor-card{display:block}.admin-label{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mint)}.notice{font-size:.9rem;color:var(--muted);line-height:1.6}.editor-question{border:1px solid #ffffff22;background:#ffffff08;border-radius:16px;padding:16px;margin:13px 0}.editor-question label{display:block;color:var(--muted);font-size:.83rem;margin:11px 0 6px}.edit-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.actions{display:flex;gap:9px;flex-wrap:wrap}.actions button{margin-top:14px}.secondary{background:#ffffff17;border:1px solid #ffffff30;color:#fff}.danger{background:#54223c;color:#fff;border:1px solid #ff8fb155}.admin-status{color:var(--mint);min-height:1.4em;font-size:.9rem;margin-top:12px}.empty{color:var(--muted);font-style:italic;padding:12px 0}.admin-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+#editor-card{display:none;border-color:#ff8fb166;background:#1d1233f2}body.admin-mode #editor-card{display:block}.admin-label{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mint)}.notice{font-size:.9rem;color:var(--muted);line-height:1.6}.editor-question{border:1px solid #ffffff22;background:#ffffff08;border-radius:16px;padding:16px;margin:13px 0}.editor-question label{display:block;color:var(--muted);font-size:.83rem;margin:11px 0 6px}.edit-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.actions{display:flex;gap:9px;flex-wrap:wrap}.actions button{margin-top:14px}.secondary{background:#ffffff17;border:1px solid #ffffff30;color:#fff}.danger{background:#54223c;color:#fff;border:1px solid #ff8fb155}.admin-status{color:var(--mint);min-height:1.4em;font-size:.9rem;margin-top:12px}.empty{color:var(--muted);font-style:italic;padding:12px 0}.admin-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.saved-answer{border:1px solid #ffffff22;background:#ffffff08;border-radius:14px;padding:13px 15px;margin:10px 0}.saved-answer .answer-title{font-weight:750;color:var(--gold);margin-bottom:5px}.saved-answer .answer-text{white-space:pre-wrap;overflow-wrap:anywhere}.saved-answer .answer-meta{font-size:.78rem;color:var(--muted);margin-top:7px}.answer-tools{display:flex;gap:8px;flex-wrap:wrap}.answer-tools button{margin-top:8px}
 @keyframes pulse{50%{transform:scale(1.14)}}
 @media(max-width:520px){.countdown{gap:7px}.timebox{padding:14px 3px}.num{font-size:2rem}.unit{font-size:.62rem}.qbody{padding-left:0}.wrap{padding-top:24px}.edit-grid{grid-template-columns:1fr}}
 </style>
@@ -61,7 +61,12 @@ input[type=text],textarea,select{width:100%;padding:12px 14px;border-radius:12px
     <div id="editor-questions"></div>
     <div class="actions"><button id="add-question" type="button">＋ Añadir pregunta</button><button id="export-page" type="button">⬇ Descargar página actualizada</button><button id="reset-questions" class="secondary" type="button">Restaurar preguntas iniciales</button></div>
     <div class="admin-status" id="admin-status" role="status"></div>
-    <p class="notice">Nota: el panel se abre añadiendo <code>?admin=1</code> al final de tu enlace. No es un sistema de inicio de sesión: es una forma sencilla de mantener el panel fuera de la vista normal. Los cambios guardados en este navegador no se sincronizan automáticamente con el de tu novia; para que le aparezcan, descarga la página actualizada y vuelve a publicarla en GitHub Pages.</p>
+    <hr style="border:0;border-top:1px solid #ffffff22;margin:26px 0">
+    <div class="admin-top"><div><div class="admin-label">📬 Respuestas guardadas</div><h2 class="section-title" style="margin-top:8px">Historial de respuestas</h2></div></div>
+    <p class="notice">Aquí aparecen las respuestas almacenadas en <strong>este mismo navegador</strong>. Puedes descargarlas como CSV. Importante: si tu novia responde desde su celular, esas respuestas quedan en su celular y no aparecerán aquí automáticamente; para recibirlas a distancia hay que conectar un servicio externo.</p>
+    <div class="answer-tools"><button id="export-answers" type="button">⬇ Descargar respuestas (CSV)</button><button id="refresh-answers" class="secondary" type="button">↻ Actualizar historial</button></div>
+    <div id="saved-answers-list" aria-live="polite"></div>
+    <p class="notice">Nota: el panel se abre añadiendo <code>?admin=1</code> al final de tu enlace. No es un sistema de inicio de sesión. Los cambios de preguntas guardados en este navegador no se sincronizan automáticamente con GitHub; para publicarlos, descarga la página actualizada y vuelve a subir <code>index.html</code>.</p>
   </section>
   <footer>Hecho con mucho cariño, solo para ti ✨</footer>
 </main>
@@ -110,7 +115,7 @@ function renderPublicQuestions(){
       try{input.value=localStorage.getItem(`birthday-answer-${q.id}`)||"";}catch(e){}
       const btn=document.createElement("button"); btn.type="button"; btn.textContent="Guardar mi respuesta";
       const feedback=document.createElement("div"); feedback.className="answer";
-      btn.addEventListener("click",()=>{try{localStorage.setItem(`birthday-answer-${q.id}`,input.value.trim());feedback.textContent=input.value.trim()?"¡Respuesta guardada, detective! 💜":"Escribe tu respuesta primero 😊";}catch(e){feedback.textContent="No se pudo guardar en este navegador.";}});
+      btn.addEventListener("click",()=>{try{const value=input.value.trim();if(!value){feedback.textContent="Escribe tu respuesta primero 😊";return;}localStorage.setItem(`birthday-answer-${q.id}`,value);localStorage.setItem(`birthday-answer-time-${q.id}`,new Date().toISOString());feedback.textContent="¡Respuesta guardada en este navegador, detective! 💜";renderSavedAnswers();}catch(e){feedback.textContent="No se pudo guardar en este navegador.";}});
       body.append(p,input,btn,feedback);
       if(q.hint && q.hint.trim()) { const details=document.createElement("details"); details.className="hint"; const summary=document.createElement("summary"); summary.textContent="Ver mini pista"; const hint=document.createElement("p"); hint.textContent=q.hint; details.append(summary,hint); body.append(details); }
       article.append(body);
@@ -146,6 +151,40 @@ function renderEditor(){
     host.append(box);
   });
 }
+function getSavedAnswers(){
+  const out=[];
+  questions.forEach((q,index)=>{
+    try{
+      const value=localStorage.getItem(`birthday-answer-${q.id}`);
+      if(value!==null && value.trim()!==""){
+        const when=localStorage.getItem(`birthday-answer-time-${q.id}`);
+        out.push({title:q.title||`Pregunta ${index+1}`,prompt:q.prompt||"",answer:value,when:when||""});
+      }
+    }catch(e){}
+  });
+  return out.sort((a,b)=>(b.when||"").localeCompare(a.when||""));
+}
+function renderSavedAnswers(){
+  const host=$("saved-answers-list");if(!host)return;
+  const answers=getSavedAnswers();host.innerHTML="";
+  if(!answers.length){host.innerHTML='<p class="empty">Todavía no hay respuestas guardadas en este navegador. Cuando se guarden respuestas aquí, aparecerán en esta sección.</p>';return;}
+  answers.forEach(item=>{
+    const card=document.createElement("div");card.className="saved-answer";
+    const title=document.createElement("div");title.className="answer-title";title.textContent=item.title;
+    const question=document.createElement("div");question.className="notice";question.textContent=item.prompt;
+    const answer=document.createElement("div");answer.className="answer-text";answer.textContent=item.answer;
+    card.append(title,question,answer);
+    if(item.when){const meta=document.createElement("div");meta.className="answer-meta";const d=new Date(item.when);meta.textContent="Guardada: "+(Number.isNaN(d.getTime())?item.when:d.toLocaleString("es-PE"));card.append(meta);}
+    host.append(card);
+  });
+}
+function exportAnswers(){
+  const answers=getSavedAnswers();if(!answers.length){setAdminStatus("No hay respuestas en este navegador para descargar.");return;}
+  const rows=[["Pregunta","Texto de la pregunta","Respuesta","Fecha de guardado"],...answers.map(a=>[a.title,a.prompt,a.answer,a.when])];
+  const csv=rows.map(row=>row.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(",")).join("\r\n");
+  const blob=new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="respuestas-cumpleanos.csv";document.body.append(a);a.click();a.remove();URL.revokeObjectURL(url);
+  setAdminStatus("Historial descargado como CSV.");
+}
 function addQuestion(){
   const used=new Set(questions.map(q=>Number(q.time)));let time=6;while(time<=17&&used.has(time))time++;if(time>17)time=17;
   const id="q-"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
@@ -176,7 +215,9 @@ if(new URLSearchParams(location.search).get("admin")==="1" || location.hash==="#
 $("add-question").addEventListener("click",addQuestion);
 $("reset-questions").addEventListener("click",restoreQuestions);
 $("export-page").addEventListener("click",exportPage);
-tick();renderEditor();renderPublicQuestions();setInterval(tick,1000);setInterval(renderPublicQuestions,30000);
+$("export-answers").addEventListener("click",exportAnswers);
+$("refresh-answers").addEventListener("click",renderSavedAnswers);
+tick();renderEditor();renderPublicQuestions();renderSavedAnswers();setInterval(tick,1000);setInterval(renderPublicQuestions,30000);setInterval(renderSavedAnswers,5000);
 </script>
 </body>
 </html>
