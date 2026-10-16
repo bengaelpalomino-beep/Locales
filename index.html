@@ -18,6 +18,7 @@ h1{font-size:clamp(2.5rem,8vw,5rem);line-height:1.02;margin:14px 0;color:#fff;te
 .section-title{font-size:1.5rem;margin:0 0 8px}.sub{color:var(--muted);line-height:1.6;margin-top:0}.question-list{display:grid;gap:12px;margin-top:20px}.q{border:1px solid #ffffff20;background:#ffffff08;border-radius:17px;padding:16px 18px}.qhead{display:flex;align-items:center;gap:12px}.hour{flex-shrink:0;width:43px;height:43px;border-radius:50%;display:grid;place-items:center;background:#ff8fb11c;border:1px solid #ff8fb155;color:var(--pink);font-weight:800}.qtitle{font-weight:750}.qtime{font-size:.78rem;color:var(--muted);margin-top:3px}.qbody{padding:13px 0 0 55px;color:#f8eefa;line-height:1.6}.qbody p{margin:0 0 10px}
 input[type=text],textarea,select{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #ffffff30;background:#120b25;color:white;font:inherit;outline:none}textarea{min-height:76px;resize:vertical}input[type=text]:focus,textarea:focus,select:focus{border-color:var(--pink)}button{font:inherit;font-weight:750;cursor:pointer;border:0;border-radius:12px;padding:11px 16px;color:#29122f;background:linear-gradient(120deg,var(--pink),var(--gold));margin-top:10px}button:focus-visible{outline:3px solid white;outline-offset:3px}.answer{color:var(--gold);font-size:.9rem;margin-top:9px;min-height:1.2em}.locked{opacity:.65}.lock-note{font-size:.88rem;color:var(--muted);margin:13px 0 0}.letter{text-align:center}.heart{font-size:2rem;animation:pulse 1.8s infinite}footer{text-align:center;color:#b9a8cc;font-size:.8rem;padding:15px}.hint{margin-top:12px;color:var(--gold)}.hint summary{cursor:pointer}
 #editor-card{display:none;border-color:#ff8fb166;background:#1d1233f2}body.admin-mode #editor-card{display:block}.admin-label{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mint)}.notice{font-size:.9rem;color:var(--muted);line-height:1.6}.editor-question{border:1px solid #ffffff22;background:#ffffff08;border-radius:16px;padding:16px;margin:13px 0}.editor-question label{display:block;color:var(--muted);font-size:.83rem;margin:11px 0 6px}.edit-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.actions{display:flex;gap:9px;flex-wrap:wrap}.actions button{margin-top:14px}.secondary{background:#ffffff17;border:1px solid #ffffff30;color:#fff}.danger{background:#54223c;color:#fff;border:1px solid #ff8fb155}.admin-status{color:var(--mint);min-height:1.4em;font-size:.9rem;margin-top:12px}.empty{color:var(--muted);font-style:italic;padding:12px 0}.admin-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.saved-answer{border:1px solid #ffffff22;background:#ffffff08;border-radius:14px;padding:13px 15px;margin:10px 0}.saved-answer .answer-title{font-weight:750;color:var(--gold);margin-bottom:5px}.saved-answer .answer-text{white-space:pre-wrap;overflow-wrap:anywhere}.saved-answer .answer-meta{font-size:.78rem;color:var(--muted);margin-top:7px}.answer-tools{display:flex;gap:8px;flex-wrap:wrap}.answer-tools button{margin-top:8px}
+.sync-box{border:1px solid #a7f3d055;background:#a7f3d012;border-radius:16px;padding:15px;margin:14px 0}
 @keyframes pulse{50%{transform:scale(1.14)}}
 @media(max-width:520px){.countdown{gap:7px}.timebox{padding:14px 3px}.num{font-size:2rem}.unit{font-size:.62rem}.qbody{padding-left:0}.wrap{padding-top:24px}.edit-grid{grid-template-columns:1fr}}
 </style>
@@ -27,7 +28,7 @@ input[type=text],textarea,select{width:100%;padding:12px 14px;border-radius:12px
   <header class="top">
     <div class="eyebrow">✨ Un pequeño misterio, solo para ti ✨</div>
     <h1>Hola, <span>niña</span> 💜</h1>
-    <p class="intro">Hay algo esperándote a las <strong>6:00 p. m.</strong>… Mientras llega el momento, tendrás pequeñas preguntas y pistas para intentar descubrir tu sorpresa. ¿Lista para investigar, futura doctora? 🩺👀</p>
+    <p class="intro">Hay algo esperándote a las <strong>6:00 p. m.</strong>… Mientras llega el momento, tendrás pequeñas preguntas y pistas cada hora para intentar descubrir tus sorpresas. ¿Lista para investigar, futura doctora? 🩺👀</p>
   </header>
 
   <section class="card" aria-label="Cuenta regresiva">
@@ -43,181 +44,500 @@ input[type=text],textarea,select{width:100%;padding:12px 14px;border-radius:12px
   </section>
 
   <section class="card">
-    <h2 class="section-title">🕵️ Misión: adivina tu regalo</h2>
-    <p class="sub">Cada pregunta se desbloquea a la hora indicada. Guarda tu respuesta y ve armando tu teoría… ¡no hagas trampa! 🤭</p>
+    <h2 class="section-title">🕵️‍♀️ Misión: adivina tu regalo</h2>
+    <p class="sub">Cada pregunta se desbloquea a la hora indicada. Al guardar tu respuesta, desbloquearás una mini pista para ir armando tu teoría… ¡no hagas trampa! 🤭</p>
     <div id="questions" class="question-list"></div>
     <p class="lock-note" id="lock-note"></p>
   </section>
 
-  <section class="card letter">
+  <section class="card letter" id="final-card">
     <div class="heart">💌</div>
     <h2 class="section-title">Una cosa sí te puedo adelantar…</h2>
-    <p class="sub">Elegí esta sorpresa pensando en ti y en todo lo que estás construyendo. Guarda un poquito de curiosidad para las 6. 🥹💜</p>
+    <p class="sub">Diseñé cada parte de esta sorpresa pensando en tu vocación, en lo linda que eres y en todo lo que estás construyendo. Guarda un poquito de curiosidad para las 6:00 p. m. 🥹💜</p>
   </section>
 
   <section class="card" id="editor-card">
-    <div class="admin-top"><div><div class="admin-label">🔧 Panel de edición</div><h2 class="section-title" style="margin-top:8px">Administra las preguntas</h2></div><span aria-hidden="true">🩺</span></div>
-    <p class="notice">Edita los textos, las mini pistas y la hora de desbloqueo. La vista de la página se actualiza mientras escribes y tus cambios se guardan en este navegador. Para publicar los cambios para todos en GitHub, usa <strong>Descargar página actualizada</strong> y reemplaza el archivo <code>index.html</code> de tu repositorio por el nuevo.</p>
+    <div class="admin-top"><div><div class="admin-label">🔧 Panel Táctico Viernes</div><h2 class="section-title" style="margin-top:8px">Administración y Telemetría en Tiempo Real</h2></div><span aria-hidden="true">🩺</span></div>
+    
+    <div class="sync-box">
+      <div class="admin-label">📡 Canal de Sincronización en Vivo (Gratis y Automático)</div>
+      <p class="notice" style="margin:6px 0 10px">Las respuestas que ella guarde en su celular se envían automáticamente a este código de canal en la nube y aparecen abajo en tiempo real. También puedes pegar un Webhook de Discord opcional si quieres recibir alertas en tu servidor.</p>
+      <div class="edit-grid">
+        <div>
+          <label style="font-size:.8rem;color:var(--mint)">Código secreto de canal (ntfy.sh)</label>
+          <input type="text" id="sync-topic-input" placeholder="Ej. viernes-doctora-sorpresa-bpg-2026">
+        </div>
+        <div>
+          <label style="font-size:.8rem;color:var(--mint)">Webhook de Discord (Opcional)</label>
+          <input type="text" id="discord-webhook-input" placeholder="https://discord.com/api/webhooks/...">
+        </div>
+      </div>
+    </div>
+
+    <p class="notice">Si editas las preguntas o el canal, usa <strong>Descargar página actualizada</strong> y sube el nuevo <code>index.html</code> a GitHub.</p>
     <div id="editor-questions"></div>
-    <div class="actions"><button id="add-question" type="button">＋ Añadir pregunta</button><button id="export-page" type="button">⬇ Descargar página actualizada</button><button id="reset-questions" class="secondary" type="button">Restaurar preguntas iniciales</button></div>
+    <div class="actions">
+      <button id="add-question" type="button">＋ Añadir pregunta</button>
+      <button id="export-page" type="button">⬇ Descargar página actualizada</button>
+      <button id="reset-questions" class="secondary" type="button">Restaurar las 12 preguntas base</button>
+    </div>
     <div class="admin-status" id="admin-status" role="status"></div>
     <hr style="border:0;border-top:1px solid #ffffff22;margin:26px 0">
-    <div class="admin-top"><div><div class="admin-label">📬 Respuestas guardadas</div><h2 class="section-title" style="margin-top:8px">Historial de respuestas</h2></div></div>
-    <p class="notice">Aquí aparecen las respuestas almacenadas en <strong>este mismo navegador</strong>. Puedes descargarlas como CSV. Importante: si tu novia responde desde su celular, esas respuestas quedan en su celular y no aparecerán aquí automáticamente; para recibirlas a distancia hay que conectar un servicio externo.</p>
-    <div class="answer-tools"><button id="export-answers" type="button">⬇ Descargar respuestas (CSV)</button><button id="refresh-answers" class="secondary" type="button">↻ Actualizar historial</button></div>
+    <div class="admin-top"><div><div class="admin-label">📬 Telemetría recibida</div><h2 class="section-title" style="margin-top:8px">Respuestas de ella en tiempo real</h2></div></div>
+    <div class="answer-tools">
+      <button id="refresh-answers" type="button">↻ Sincronizar respuestas de la nube ahora</button>
+      <button id="export-answers" class="secondary" type="button">⬇ Descargar respuestas (CSV)</button>
+    </div>
     <div id="saved-answers-list" aria-live="polite"></div>
-    <p class="notice">Nota: el panel se abre añadiendo <code>?admin=1</code> al final de tu enlace. No es un sistema de inicio de sesión. Los cambios de preguntas guardados en este navegador no se sincronizan automáticamente con GitHub; para publicarlos, descarga la página actualizada y vuelve a subir <code>index.html</code>.</p>
   </section>
   <footer>Hecho con mucho cariño, solo para ti ✨</footer>
 </main>
 
 <script id="question-config">
+window.SYNC_CONFIG = {
+  topic: "viernes-doctora-sorpresa-bpg-2026",
+  discordWebhook: ""
+};
 window.BIRTHDAY_QUESTIONS = [
-  {id:"q-superheroe", time:6, title:"Pista del superhéroe", prompt:"¿Qué superhéroe amas más que a nada?", hint:"Su enemigo fue el Primer Vengador."},
-  {id:"q-colores", time:7, title:"Los tres colores", prompt:"¿Cuáles son tus 3 colores favoritos?", hint:""}
+  {
+    id: "q-01-superheroe",
+    time: 6,
+    title: "01 · El bando correcto (Civil War)",
+    prompt: "En Civil War hubo dos bandos, pero sabemos que el genio de la armadura tenía la razón (#TeamIronMan). Si Tony Stark diseñara un asistente como J.A.R.V.I.S. exclusivo para tus estudios de medicina, ¿qué es lo primero que le pedirías que te muestre o explique?",
+    hint: "Pista 1/12 (Regalo #1): No tiene un reactor Arc en el pecho, pero muy pronto tendrás un sistema interactivo propio para acompañarte en tus noches de estudio."
+  },
+  {
+    id: "q-02-colores",
+    time: 7,
+    title: "02 · Tus tres colores",
+    prompt: "¿Cuáles son tus 3 colores favoritos hoy en día y cuál sientes que te hace brillar más cuando te arreglas para una ocasión especial?",
+    hint: "Pista 2/12: Uno de los detalles que tengo preparados fue elegido pensando exactamente en lo linda que te ves cuando brillas así."
+  },
+  {
+    id: "q-03-apartado",
+    time: 8,
+    title: "03 · A Quién es apartado (Música que inspira)",
+    prompt: "Hay melodías que llenan el alma de paz. De las canciones de los Jóvenes y de la Iglesia, ¿cuál es esa canción o frase que siempre te recuerda quién eres y a Quién estás apartada para servir?",
+    hint: "Pista 3/12: Esa luz y esa nobleza que tienes en el corazón son la inspiración principal de todo esto."
+  },
+  {
+    id: "q-04-santos-bravos",
+    time: 9,
+    title: "04 · Frecuencia Santos Bravos",
+    prompt: "Subiendo el volumen: si armamos la playlist oficial para ir rumbo a una salida especial y suena Santos Bravos, ¿qué canción tiene que ser la primera en sonar sí o sí y qué parte te encanta cantar?",
+    hint: "Pista 4/12: Guarda esa canción en tu mente, porque será parte de la banda sonora cuando salgamos."
+  },
+  {
+    id: "q-05-vestido",
+    time: 10,
+    title: "05 · Secreto de estilo",
+    prompt: "Pregunta de detective: cuando ves un vestido que te enamora a primera vista, ¿qué detalle o corte hace que digas 'lo amo' y qué talla o ajuste sientes que te queda perfecto?",
+    hint: "Pista 5/12 (Regalo #2): Ese vestido que tanto te gusta dejó de ser solo una idea... y está esperando por ti. 👗✨"
+  },
+  {
+    id: "q-06-anatomia",
+    time: 11,
+    title: "06 · Guardia Anatómica",
+    prompt: "Consulta para la futura doctora: entre explorar cada hueso y sus fracturas, ver el mapa de venas y arterias, o repasar cirugías, ¿cuál te da más curiosidad explorar en 3D ahora mismo y cuál te parece más retador?",
+    hint: "Pista 6/12 (Regalo #1): Muy pronto podrás navegar por el cuerpo humano a escala completa con tu mouse o con el lápiz de tu tablet."
+  },
+  {
+    id: "q-07-jarvis-med",
+    time: 12,
+    title: "07 · Laboratorio Stark",
+    prompt: "Imagina la escena de Iron Man 2 mapeando hologramas en el aire. Cuando estudias un tema difícil de medicina, ¿te ayuda más ver el modelo en 3D, hacer trazos y apuntes encima, o que te hagan preguntas clave de libros médicos?",
+    hint: "Pista 7/12: 'Hola, futura Doctora. ¿Qué deseamos aprender hoy?' — Muy pronto una inteligencia artificial te recibirá así al entrar."
+  },
+  {
+    id: "q-08-complemento",
+    time: 13,
+    title: "08 · El toque especial",
+    prompt: "Imagina que estás lista para estrenar algo que te encanta en una salida bonita. ¿Con qué pequeño detalle adicional (tu dulce favorito, una flor o un accesorio en particular) sería el momento más especial?",
+    hint: "Pista 8/12: El servidor central acaba de registrar tu respuesta para que no falte ningún detalle."
+  },
+  {
+    id: "q-09-especialidad",
+    time: 14,
+    title: "09 · Tu futuro quirófano",
+    prompt: "Mirando al futuro: cuando tengas tu título y tu bata médica, ¿en qué especialidad te ilusiona verte ejerciendo y por qué te inspira tanto?",
+    hint: "Pista 9/12: Configurando las credenciales de tu plataforma médica con tu futura especialidad. 🩺"
+  },
+  {
+    id: "q-10-horario-cita",
+    time: 15,
+    title: "10 · El momento perfecto",
+    prompt: "Si pudieras armar una cita ideal sin mirar el reloj, ¿en qué momento del día disfrutas más salir para desconectarte de todo (al mediodía, a media tarde o por la noche) y como a qué hora sientes que empieza el plan perfecto?",
+    hint: "Pista 10/12 (Coordenada Temporal): Sincronizando relojes en el sistema... Guardando tu horario favorito para nuestra próxima salida."
+  },
+  {
+    id: "q-11-restaurante",
+    time: 16,
+    title: "11 · Ruta gastronómica",
+    prompt: "Sabemos que Fridays tiene el puesto #1 indiscutible en tu corazón, pero si tuvieras que elegir otro restaurante o lugar especial que te llame mucho la atención para ir a comer juntos, ¿cuál elegirías?",
+    hint: "Pista 11/12 (Coordenada de Ubicación): Coordenadas gastronómicas registradas en el mapa táctico."
+  },
+  {
+    id: "q-12-familia",
+    time: 17,
+    title: "12 · Huellas en el corazón",
+    prompt: "Para cerrar con algo muy profundo y especial de tu vida: ¿cuál es el nombre de esa persona de tu familia que más ha impactado tu vida, que llevas siempre en el alma y que más extrañas?",
+    hint: "Pista 12/12: Hay nombres y personas que viven para siempre en lo que somos. ¡Misión completada, detective! A las 6:00 p. m. se desbloquea el mensaje final. 💜"
+  }
 ];
 </script>
 <script>
 const INITIAL_QUESTIONS = JSON.parse(JSON.stringify(window.BIRTHDAY_QUESTIONS));
-const STORE_KEY = "birthday-questions-v2";
+const STORE_KEY = "birthday-questions-v4";
+const CLOUD_ANSWERS_KEY = "birthday-cloud-answers-v4";
 let questions = loadQuestions();
+let cloudAnswers = [];
+
 function loadQuestions(){
-  try { const stored = localStorage.getItem(STORE_KEY); if(stored){ const parsed=JSON.parse(stored); if(Array.isArray(parsed)) return parsed; } } catch(e){}
+  try {
+    const stored = localStorage.getItem(STORE_KEY);
+    if(stored){
+      const parsed = JSON.parse(stored);
+      if(Array.isArray(parsed) && parsed.length) return parsed;
+    }
+  } catch(e){}
   return JSON.parse(JSON.stringify(INITIAL_QUESTIONS));
 }
 function persistQuestions(){
   try { localStorage.setItem(STORE_KEY, JSON.stringify(questions)); }
-  catch(e){ setAdminStatus("No se pudo guardar en este navegador. Descarga la página para conservar tus cambios."); }
+  catch(e){ setAdminStatus("No se pudo guardar localmente. Descarga la página para conservar cambios."); }
 }
 const $ = id => document.getElementById(id);
 const pad = n => String(n).padStart(2,"0");
-const timeLabel = h => `${pad(h)}:00 ${h<12 ? "a. m." : "p. m."}`;
-function safeText(value){return String(value ?? "");}
+const timeLabel = h => `${pad(h > 12 ? h - 12 : h)}:00 ${h < 12 ? "a. m." : "p. m."}`;
+
+async function transmitAnswerToCloud(payload){
+  const cfg = window.SYNC_CONFIG || {};
+  const topic = (cfg.topic || "viernes-doctora-sorpresa-bpg-2026").trim();
+  const tasks = [];
+  if(topic){
+    tasks.push(fetch(`https://ntfy.sh/${encodeURIComponent(topic)}`, {
+      method: "POST",
+      body: JSON.stringify(payload)
+    }));
+  }
+  if(cfg.discordWebhook && cfg.discordWebhook.startsWith("http")){
+    tasks.push(fetch(cfg.discordWebhook.trim(), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        content: `🩺 **Nueva respuesta de la futura Doctora**\n**${payload.title}**\n> *${payload.prompt}*\n💬 **Respuesta:** ${payload.answer}\n🕒 ${new Date(payload.when).toLocaleString("es-PE")}`
+      })
+    }));
+  }
+  await Promise.allSettled(tasks);
+}
+
+async function fetchAnswersFromCloud(){
+  const cfg = window.SYNC_CONFIG || {};
+  const topic = (cfg.topic || "viernes-doctora-sorpresa-bpg-2026").trim();
+  if(!topic) return;
+  try {
+    const res = await fetch(`https://ntfy.sh/${encodeURIComponent(topic)}/json?poll=1&since=all`);
+    if(!res.ok) return;
+    const text = await res.text();
+    const lines = text.split("\n").map(l => l.trim()).filter(Boolean);
+    const parsedList = [];
+    lines.forEach(line => {
+      try {
+        const evt = JSON.parse(line);
+        if(evt.event === "message" && evt.message){
+          const data = JSON.parse(evt.message);
+          if(data && data.answer){ parsedList.push(data); }
+        }
+      } catch(e){}
+    });
+    if(parsedList.length){
+      cloudAnswers = parsedList;
+      try { localStorage.setItem(CLOUD_ANSWERS_KEY, JSON.stringify(cloudAnswers)); } catch(e){}
+      renderSavedAnswers();
+    }
+  } catch(e){}
+}
+
 function renderPublicQuestions(){
   const currentHour = new Date().getHours();
   const host = $("questions"); host.innerHTML = "";
   const ordered = [...questions].sort((a,b)=>Number(a.time)-Number(b.time));
   let nextTime = null;
-  if(!ordered.length){host.innerHTML='<div class="empty">Todavía no hay preguntas. ¡Pronto habrá más pistas! 💜</div>'; $("lock-note").textContent=""; return;}
+  if(!ordered.length){
+    host.innerHTML='<div class="empty">Todavía no hay preguntas. ¡Pronto habrá más pistas! 💜</div>';
+    $("lock-note").textContent="";
+    return;
+  }
   ordered.forEach((q,index)=>{
-    const hour=Number(q.time)||6; const unlocked=currentHour>=hour;
-    if(!unlocked && nextTime===null) nextTime=hour;
-    const article=document.createElement("article"); article.className="q"+(unlocked?"":" locked");
-    const head=document.createElement("div"); head.className="qhead";
-    const badge=document.createElement("div"); badge.className="hour"; badge.textContent=unlocked?"✓":"🔒";
-    const meta=document.createElement("div"); const title=document.createElement("div"); title.className="qtitle"; title.textContent=q.title||`Pregunta ${index+1}`;
-    const time=document.createElement("div"); time.className="qtime"; time.textContent=`${timeLabel(hour)} · ${unlocked?"¡Disponible!":"Se desbloquea a esta hora"}`;
+    const hour = Number(q.time)||6;
+    const unlocked = currentHour >= hour;
+    if(!unlocked && nextTime === null) nextTime = hour;
+    const article = document.createElement("article");
+    article.className = "q" + (unlocked ? "" : " locked");
+    const head = document.createElement("div"); head.className = "qhead";
+    const badge = document.createElement("div"); badge.className = "hour"; badge.textContent = unlocked ? "✓" : "🔒";
+    const meta = document.createElement("div");
+    const title = document.createElement("div"); title.className = "qtitle"; title.textContent = q.title || `Pregunta ${index+1}`;
+    const time = document.createElement("div"); time.className = "qtime"; time.textContent = `${timeLabel(hour)} · ${unlocked ? "¡Disponible!" : "Se desbloquea a esta hora"}`;
     meta.append(title,time); head.append(badge,meta); article.append(head);
+
     if(unlocked){
-      const body=document.createElement("div"); body.className="qbody";
-      const p=document.createElement("p"); p.textContent=q.prompt||"Piensa en tu respuesta…";
-      const input=document.createElement("input"); input.type="text"; input.placeholder="Tu respuesta o teoría…"; input.maxLength=250; input.setAttribute("aria-label",`Respuesta: ${q.title||`Pregunta ${index+1}`}`); input.id=`answer-${q.id}`;
-      try{input.value=localStorage.getItem(`birthday-answer-${q.id}`)||"";}catch(e){}
-      const btn=document.createElement("button"); btn.type="button"; btn.textContent="Guardar mi respuesta";
-      const feedback=document.createElement("div"); feedback.className="answer";
-      btn.addEventListener("click",()=>{try{const value=input.value.trim();if(!value){feedback.textContent="Escribe tu respuesta primero 😊";return;}localStorage.setItem(`birthday-answer-${q.id}`,value);localStorage.setItem(`birthday-answer-time-${q.id}`,new Date().toISOString());feedback.textContent="¡Respuesta guardada en este navegador, detective! 💜";renderSavedAnswers();}catch(e){feedback.textContent="No se pudo guardar en este navegador.";}});
-      body.append(p,input,btn,feedback);
-      if(q.hint && q.hint.trim()) { const details=document.createElement("details"); details.className="hint"; const summary=document.createElement("summary"); summary.textContent="Ver mini pista"; const hint=document.createElement("p"); hint.textContent=q.hint; details.append(summary,hint); body.append(details); }
+      const body = document.createElement("div"); body.className = "qbody";
+      const p = document.createElement("p"); p.textContent = q.prompt || "Piensa en tu respuesta…";
+      let savedVal = "";
+      try { savedVal = localStorage.getItem(`birthday-answer-${q.id}`) || ""; } catch(e){}
+      const input = document.createElement("input");
+      input.type = "text"; input.placeholder = "Escribe tu respuesta o teoría aquí…";
+      input.maxLength = 350; input.value = savedVal;
+      input.setAttribute("aria-label", `Respuesta: ${q.title || `Pregunta ${index+1}`}`);
+
+      const btn = document.createElement("button"); btn.type = "button"; btn.textContent = "Guardar mi respuesta y ver pista";
+      const feedback = document.createElement("div"); feedback.className = "answer";
+
+      const details = document.createElement("details"); details.className = "hint";
+      details.style.display = savedVal ? "block" : "none";
+      const summary = document.createElement("summary"); summary.textContent = "✨ Ver mini pista desbloqueada";
+      const hintP = document.createElement("p"); hintP.textContent = q.hint || "";
+      details.append(summary, hintP);
+
+      btn.addEventListener("click", async ()=>{
+        const value = input.value.trim();
+        if(!value){ feedback.textContent = "Escribe tu respuesta primero 😊"; return; }
+        const nowIso = new Date().toISOString();
+        try {
+          localStorage.setItem(`birthday-answer-${q.id}`, value);
+          localStorage.setItem(`birthday-answer-time-${q.id}`, nowIso);
+        } catch(e){}
+        feedback.textContent = "Guardando y desbloqueando pista… 📡💜";
+        await transmitAnswerToCloud({
+          id: q.id,
+          title: q.title || `Pregunta ${index+1}`,
+          prompt: q.prompt || "",
+          answer: value,
+          when: nowIso
+        });
+        feedback.textContent = "¡Respuesta guardada, detective! Aquí tienes tu pista 👇💜";
+        if(q.hint && q.hint.trim()){
+          details.style.display = "block";
+          details.open = true;
+        }
+        renderSavedAnswers();
+      });
+
+      body.append(p, input, btn, feedback);
+      if(q.hint && q.hint.trim()) body.append(details);
       article.append(body);
-    } else {const lockedText=document.createElement("div");lockedText.className="qbody";lockedText.textContent="Todavía no… vuelve cuando llegue esta hora. 🤫";article.append(lockedText);}
+    } else {
+      const lockedText = document.createElement("div");
+      lockedText.className = "qbody";
+      lockedText.textContent = "Todavía no… vuelve cuando el reloj marque esta hora. 🤫";
+      article.append(lockedText);
+    }
     host.append(article);
   });
-  $("lock-note").textContent=nextTime!==null?`La próxima pregunta se desbloquea a las ${timeLabel(nextTime)}. ¡Vuelve a mirar!`:"¡Todas las preguntas están desbloqueadas! Ya casi llega la sorpresa. 🎁";
+  $("lock-note").textContent = nextTime !== null
+    ? `La próxima pregunta se desbloquea a las ${timeLabel(nextTime)}. ¡Vuelve a mirar!`
+    : "¡Todas las preguntas están desbloqueadas! Ya casi llega la hora. 🎁";
 }
-function setAdminStatus(message){const el=$("admin-status"); if(el) el.textContent=message;}
+
+function setAdminStatus(message){ const el = $("admin-status"); if(el) el.textContent = message; }
+
 function renderEditor(){
-  const host=$("editor-questions"); host.innerHTML="";
-  if(!questions.length){host.innerHTML='<p class="empty">No hay preguntas todavía. Usa “Añadir pregunta” para crear una.</p>';return;}
+  const host = $("editor-questions"); host.innerHTML = "";
+  const topicInput = $("sync-topic-input");
+  const discordInput = $("discord-webhook-input");
+  if(topicInput && window.SYNC_CONFIG){
+    topicInput.value = window.SYNC_CONFIG.topic || "";
+    topicInput.oninput = () => { window.SYNC_CONFIG.topic = topicInput.value.trim(); setAdminStatus("Canal actualizado. Recuerda descargar la página para publicar."); };
+  }
+  if(discordInput && window.SYNC_CONFIG){
+    discordInput.value = window.SYNC_CONFIG.discordWebhook || "";
+    discordInput.oninput = () => { window.SYNC_CONFIG.discordWebhook = discordInput.value.trim(); setAdminStatus("Webhook actualizado. Recuerda descargar la página para publicar."); };
+  }
+
+  if(!questions.length){
+    host.innerHTML='<p class="empty">No hay preguntas todavía. Usa “Añadir pregunta” para crear una.</p>';
+    return;
+  }
   questions.forEach((q,index)=>{
-    const box=document.createElement("div"); box.className="editor-question";
-    const heading=document.createElement("div"); heading.className="admin-top";
-    const title=document.createElement("strong"); title.textContent=`Pregunta ${index+1}`;
-    const del=document.createElement("button"); del.type="button"; del.className="danger"; del.textContent="Eliminar"; del.addEventListener("click",()=>{questions=questions.filter(x=>x.id!==q.id); persistQuestions();renderEditor();renderPublicQuestions();setAdminStatus("Pregunta eliminada.");});
-    heading.append(title,del);box.append(heading);
-    const titleLabel=document.createElement("label");titleLabel.textContent="Nombre interno / título";
-    const titleInput=document.createElement("input");titleInput.type="text";titleInput.value=q.title||"";titleInput.maxLength=100;titleInput.placeholder="Ej. Primera pista";
-    titleLabel.append(titleInput);box.append(titleLabel);
-    const timeLabelEl=document.createElement("label");timeLabelEl.textContent="Hora a la que se desbloquea";
-    const timeSelect=document.createElement("select");for(let h=6;h<=17;h++){const opt=document.createElement("option");opt.value=String(h);opt.textContent=timeLabel(h);timeSelect.append(opt);}timeSelect.value=String(q.time??6);timeLabelEl.append(timeSelect);box.append(timeLabelEl);
-    const promptLabel=document.createElement("label");promptLabel.textContent="Pregunta que verá ella";
-    const promptInput=document.createElement("textarea");promptInput.value=q.prompt||"";promptInput.maxLength=500;promptInput.placeholder="Escribe la pregunta…";promptLabel.append(promptInput);box.append(promptLabel);
-    const hintLabel=document.createElement("label");hintLabel.textContent="Mini pista (déjala vacía si no quieres mostrar ninguna)";
-    const hintInput=document.createElement("textarea");hintInput.value=q.hint||"";hintInput.maxLength=350;hintInput.placeholder="Escribe la pista opcional…";hintLabel.append(hintInput);box.append(hintLabel);
-    const update=(field,value)=>{q[field]=value;persistQuestions();renderPublicQuestions();setAdminStatus("Vista actualizada y cambios guardados en este navegador.");};
+    const box = document.createElement("div"); box.className = "editor-question";
+    const heading = document.createElement("div"); heading.className = "admin-top";
+    const title = document.createElement("strong"); title.textContent = `Pregunta ${index+1} (${timeLabel(Number(q.time)||6)})`;
+    const del = document.createElement("button"); del.type = "button"; del.className = "danger"; del.textContent = "Eliminar";
+    del.addEventListener("click",()=>{
+      questions = questions.filter(x=>x.id!==q.id);
+      persistQuestions(); renderEditor(); renderPublicQuestions();
+      setAdminStatus("Pregunta eliminada.");
+    });
+    heading.append(title,del); box.append(heading);
+
+    const titleLabel = document.createElement("label"); titleLabel.textContent = "Título de la misión";
+    const titleInput = document.createElement("input"); titleInput.type = "text"; titleInput.value = q.title||"";
+    titleLabel.append(titleInput); box.append(titleLabel);
+
+    const timeLabelEl = document.createElement("label"); timeLabelEl.textContent = "Hora de desbloqueo";
+    const timeSelect = document.createElement("select");
+    for(let h=6;h<=17;h++){
+      const opt = document.createElement("option"); opt.value = String(h); opt.textContent = timeLabel(h);
+      timeSelect.append(opt);
+    }
+    timeSelect.value = String(q.time??6); timeLabelEl.append(timeSelect); box.append(timeLabelEl);
+
+    const promptLabel = document.createElement("label"); promptLabel.textContent = "Pregunta que verá ella";
+    const promptInput = document.createElement("textarea"); promptInput.value = q.prompt||"";
+    promptLabel.append(promptInput); box.append(promptLabel);
+
+    const hintLabel = document.createElement("label"); hintLabel.textContent = "Mini pista (se desbloquea cuando ella responde)";
+    const hintInput = document.createElement("textarea"); hintInput.value = q.hint||"";
+    hintLabel.append(hintInput); box.append(hintLabel);
+
+    const update = (field,value)=>{
+      q[field] = value; persistQuestions(); renderPublicQuestions();
+      setAdminStatus("Cambios guardados en vista previa.");
+    };
     titleInput.addEventListener("input",()=>update("title",titleInput.value));
-    timeSelect.addEventListener("change",()=>update("time",Number(timeSelect.value)));
+    timeSelect.addEventListener("change",()=>{ update("time",Number(timeSelect.value)); renderEditor(); });
     promptInput.addEventListener("input",()=>update("prompt",promptInput.value));
     hintInput.addEventListener("input",()=>update("hint",hintInput.value));
     host.append(box);
   });
 }
+
 function getSavedAnswers(){
-  const out=[];
+  const map = new Map();
+  try {
+    const cachedCloud = JSON.parse(localStorage.getItem(CLOUD_ANSWERS_KEY) || "[]");
+    if(Array.isArray(cachedCloud)) cachedCloud.forEach(item => map.set(`${item.id}-${item.answer}`, item));
+  } catch(e){}
+  cloudAnswers.forEach(item => map.set(`${item.id}-${item.answer}`, item));
+
   questions.forEach((q,index)=>{
-    try{
-      const value=localStorage.getItem(`birthday-answer-${q.id}`);
-      if(value!==null && value.trim()!==""){
-        const when=localStorage.getItem(`birthday-answer-time-${q.id}`);
-        out.push({title:q.title||`Pregunta ${index+1}`,prompt:q.prompt||"",answer:value,when:when||""});
+    try {
+      const value = localStorage.getItem(`birthday-answer-${q.id}`);
+      if(value !== null && value.trim() !== ""){
+        const when = localStorage.getItem(`birthday-answer-time-${q.id}`) || "";
+        map.set(`${q.id}-${value}`, {
+          id: q.id,
+          title: q.title || `Pregunta ${index+1}`,
+          prompt: q.prompt || "",
+          answer: value,
+          when
+        });
       }
-    }catch(e){}
+    } catch(e){}
   });
-  return out.sort((a,b)=>(b.when||"").localeCompare(a.when||""));
+  return Array.from(map.values()).sort((a,b)=>(b.when||"").localeCompare(a.when||""));
 }
+
 function renderSavedAnswers(){
-  const host=$("saved-answers-list");if(!host)return;
-  const answers=getSavedAnswers();host.innerHTML="";
-  if(!answers.length){host.innerHTML='<p class="empty">Todavía no hay respuestas guardadas en este navegador. Cuando se guarden respuestas aquí, aparecerán en esta sección.</p>';return;}
+  const host = $("saved-answers-list"); if(!host) return;
+  const answers = getSavedAnswers(); host.innerHTML = "";
+  if(!answers.length){
+    host.innerHTML='<p class="empty">Esperando respuestas de ella… En cuanto guarde una respuesta en su celular, aparecerá aquí automáticamente.</p>';
+    return;
+  }
   answers.forEach(item=>{
-    const card=document.createElement("div");card.className="saved-answer";
-    const title=document.createElement("div");title.className="answer-title";title.textContent=item.title;
-    const question=document.createElement("div");question.className="notice";question.textContent=item.prompt;
-    const answer=document.createElement("div");answer.className="answer-text";answer.textContent=item.answer;
+    const card = document.createElement("div"); card.className = "saved-answer";
+    const title = document.createElement("div"); title.className = "answer-title"; title.textContent = item.title;
+    const question = document.createElement("div"); question.className = "notice"; question.textContent = item.prompt;
+    const answer = document.createElement("div"); answer.className = "answer-text"; answer.textContent = item.answer;
     card.append(title,question,answer);
-    if(item.when){const meta=document.createElement("div");meta.className="answer-meta";const d=new Date(item.when);meta.textContent="Guardada: "+(Number.isNaN(d.getTime())?item.when:d.toLocaleString("es-PE"));card.append(meta);}
+    if(item.when){
+      const meta = document.createElement("div"); meta.className = "answer-meta";
+      const d = new Date(item.when);
+      meta.textContent = "Recibida: " + (Number.isNaN(d.getTime()) ? item.when : d.toLocaleString("es-PE"));
+      card.append(meta);
+    }
     host.append(card);
   });
 }
+
 function exportAnswers(){
-  const answers=getSavedAnswers();if(!answers.length){setAdminStatus("No hay respuestas en este navegador para descargar.");return;}
-  const rows=[["Pregunta","Texto de la pregunta","Respuesta","Fecha de guardado"],...answers.map(a=>[a.title,a.prompt,a.answer,a.when])];
-  const csv=rows.map(row=>row.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(",")).join("\r\n");
-  const blob=new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="respuestas-cumpleanos.csv";document.body.append(a);a.click();a.remove();URL.revokeObjectURL(url);
+  const answers = getSavedAnswers();
+  if(!answers.length){ setAdminStatus("No hay respuestas registradas todavía."); return; }
+  const rows = [["Pregunta","Texto","Respuesta","Fecha"], ...answers.map(a=>[a.title,a.prompt,a.answer,a.when])];
+  const csv = rows.map(row=>row.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(",")).join("\r\n");
+  const blob = new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a"); a.href = url; a.download = "respuestas-doctora.csv";
+  document.body.append(a); a.click(); a.remove(); URL.revokeObjectURL(url);
   setAdminStatus("Historial descargado como CSV.");
 }
+
 function addQuestion(){
-  const used=new Set(questions.map(q=>Number(q.time)));let time=6;while(time<=17&&used.has(time))time++;if(time>17)time=17;
-  const id="q-"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
-  questions.push({id,time,title:"Nueva pista",prompt:"Escribe aquí tu pregunta.",hint:""});persistQuestions();renderEditor();renderPublicQuestions();setAdminStatus("Nueva pregunta añadida. ¡Edítala aquí mismo!");
+  const used = new Set(questions.map(q=>Number(q.time)));
+  let time = 6; while(time<=17 && used.has(time)) time++; if(time>17) time = 17;
+  const id = "q-"+Date.now().toString(36);
+  questions.push({id,time,title:"Nueva pista",prompt:"Escribe aquí tu pregunta.",hint:"Escribe aquí la mini pista."});
+  persistQuestions(); renderEditor(); renderPublicQuestions();
+  setAdminStatus("Nueva pregunta añadida.");
 }
-function restoreQuestions(){if(!confirm("¿Restaurar las dos preguntas iniciales? Se perderán los cambios locales de preguntas."))return;questions=JSON.parse(JSON.stringify(INITIAL_QUESTIONS));persistQuestions();renderEditor();renderPublicQuestions();setAdminStatus("Preguntas iniciales restauradas.");}
+
+function restoreQuestions(){
+  if(!confirm("¿Restaurar las 12 preguntas diseñadas por Viernes?")) return;
+  questions = JSON.parse(JSON.stringify(INITIAL_QUESTIONS));
+  persistQuestions(); renderEditor(); renderPublicQuestions();
+  setAdminStatus("Las 12 preguntas base han sido restauradas.");
+}
+
 function exportPage(){
-  const clone=document.documentElement.cloneNode(true);
+  const clone = document.documentElement.cloneNode(true);
   clone.querySelector("body").classList.remove("admin-mode");
-  const config=clone.querySelector("#question-config");
-  config.textContent="\nwindow.BIRTHDAY_QUESTIONS = "+JSON.stringify(questions,null,2)+";\n";
-  const output="<!DOCTYPE html>\n"+clone.outerHTML;
-  const blob=new Blob([output],{type:"text/html;charset=utf-8"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="index.html";document.body.append(a);a.click();a.remove();URL.revokeObjectURL(url);
-  setAdminStatus("¡Página descargada! Ahora reemplaza index.html en GitHub y espera a que Pages publique los cambios.");
+  const config = clone.querySelector("#question-config");
+  config.textContent = "\nwindow.SYNC_CONFIG = " + JSON.stringify(window.SYNC_CONFIG, null, 2) + ";\nwindow.BIRTHDAY_QUESTIONS = " + JSON.stringify(questions, null, 2) + ";\n";
+  const output = "<!DOCTYPE html>\n" + clone.outerHTML;
+  const blob = new Blob([output],{type:"text/html;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a"); a.href = url; a.download = "index.html";
+  document.body.append(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  setAdminStatus("¡index.html descargado! Súbelo a tu repositorio de GitHub.");
 }
+
 function tick(){
-  const now=new Date();const deadline=new Date(now);deadline.setHours(18,0,0,0);const start=new Date(now);start.setHours(6,0,0,0);
-  let target=deadline;if(now>=deadline){target.setDate(target.getDate()+1);}
-  let diff=Math.max(0,target-now);
-  const hours=Math.floor(diff/3600000);const minutes=Math.floor((diff%3600000)/60000);const seconds=Math.floor((diff%60000)/1000);
-  $("hours").textContent=pad(hours);$("minutes").textContent=pad(minutes);$("seconds").textContent=pad(seconds);
-  if(now>=deadline){$("status").textContent="La hora de la sorpresa de hoy ya llegó… ¡o prepárate para mañana! 🎁💜";}
-  else{$("status").textContent=`Hasta las 6:00 p. m. · ${now.toLocaleDateString("es-PE",{weekday:"long",day:"numeric",month:"long"})}`;}
-  const elapsed=Math.max(0,Math.min(12*3600000,now-start));$("bar").style.width=`${Math.max(0,Math.min(100,elapsed/(12*3600000)*100))}%`;
-  $("heart").textContent=["♡","♥","💗","♥"][Math.floor(now.getSeconds()/15)];
+  const now = new Date();
+  const deadline = new Date(now); deadline.setHours(18,0,0,0);
+  const start = new Date(now); start.setHours(6,0,0,0);
+
+  if(now >= deadline){
+    $("hours").textContent = "00";
+    $("minutes").textContent = "00";
+    $("seconds").textContent = "00";
+    $("status").innerHTML = "🎉 <strong>¡LLEGÓ LA HORA, FUTURA DOCTORA!</strong> La primera parte de tu sorpresa está desbloqueada. 💜🩺";
+    $("bar").style.width = "100%";
+    $("heart").textContent = "💗";
+    return;
+  }
+
+  let diff = Math.max(0, deadline - now);
+  const hours = Math.floor(diff/3600000);
+  const minutes = Math.floor((diff%3600000)/60000);
+  const seconds = Math.floor((diff%60000)/1000);
+  $("hours").textContent = pad(hours);
+  $("minutes").textContent = pad(minutes);
+  $("seconds").textContent = pad(seconds);
+  $("status").textContent = `Cuenta regresiva hacia las 6:00 p. m. · ${now.toLocaleDateString("es-PE",{weekday:"long",day:"numeric",month:"long"})}`;
+
+  const elapsed = Math.max(0, Math.min(12*3600000, now - start));
+  $("bar").style.width = `${Math.max(0, Math.min(12*3600000, elapsed))/(12*3600000)*100}%`;
+  $("heart").textContent = ["♡","♥","💗","♥"][Math.floor(now.getSeconds()/15)];
 }
-if(new URLSearchParams(location.search).get("admin")==="1" || location.hash==="#editar"){document.body.classList.add("admin-mode");}
+
+const isAdmin = new URLSearchParams(location.search).get("admin")==="1" || location.hash==="#editar";
+if(isAdmin){
+  document.body.classList.add("admin-mode");
+  fetchAnswersFromCloud();
+  setInterval(fetchAnswersFromCloud, 8000);
+}
 $("add-question").addEventListener("click",addQuestion);
 $("reset-questions").addEventListener("click",restoreQuestions);
 $("export-page").addEventListener("click",exportPage);
 $("export-answers").addEventListener("click",exportAnswers);
-$("refresh-answers").addEventListener("click",renderSavedAnswers);
-tick();renderEditor();renderPublicQuestions();renderSavedAnswers();setInterval(tick,1000);setInterval(renderPublicQuestions,30000);setInterval(renderSavedAnswers,5000);
+$("refresh-answers").addEventListener("click",()=>{ setAdminStatus("Sincronizando con la nube..."); fetchAnswersFromCloud(); });
+
+tick(); renderEditor(); renderPublicQuestions(); renderSavedAnswers();
+setInterval(tick,1000);
+setInterval(renderPublicQuestions,30000);
 </script>
 </body>
 </html>
