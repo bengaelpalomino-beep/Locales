@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#170f2e">
+<title>Hola, niña 💜 | Una sorpresa para ti</title>
+<style>
+:root{--night:#170f2e;--plum:#2b1748;--pink:#ff8fb1;--gold:#ffe2a8;--cream:#fff8f5;--muted:#d9cce8;--mint:#a7f3d0}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--cream);font-family:ui-rounded,"Trebuchet MS",system-ui,sans-serif;background:radial-gradient(ellipse at 50% 0%,#57306d 0%,var(--plum) 38%,var(--night) 78%);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.55;background-image:radial-gradient(2px 2px at 20% 30%,#fff 45%,transparent 55%),radial-gradient(1px 1px at 70% 20%,#ffe2a8 45%,transparent 55%),radial-gradient(2px 2px at 80% 75%,#fff 45%,transparent 55%),radial-gradient(1px 1px at 35% 82%,#ff8fb1 45%,transparent 55%);background-size:190px 170px,230px 210px,280px 230px,170px 190px}
+.wrap{position:relative;width:min(900px,92%);margin:auto;padding:34px 0 50px}.top{text-align:center;margin-bottom:26px}.eyebrow{letter-spacing:.18em;text-transform:uppercase;font-size:.75rem;color:var(--gold)}
+h1{font-size:clamp(2.5rem,8vw,5rem);line-height:1.02;margin:14px 0;color:#fff;text-shadow:0 0 25px #ff8fb155}h1 span{color:var(--pink)}
+.intro{max-width:600px;margin:0 auto;color:var(--muted);font-size:1.05rem;line-height:1.7}.card{background:#ffffff0d;border:1px solid #ffffff25;border-radius:26px;backdrop-filter:blur(10px);box-shadow:0 20px 70px #08031455;padding:clamp(20px,4vw,36px);margin:20px 0}
+.count-label{text-align:center;color:var(--gold);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase}.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0 10px}.timebox{padding:17px 6px;border-radius:18px;text-align:center;background:linear-gradient(160deg,#ffffff17,#ffffff08);border:1px solid #ffffff1b}
+.num{display:block;font-size:clamp(2rem,7vw,3.8rem);font-variant-numeric:tabular-nums;font-weight:800;line-height:1.1;color:white}.unit{display:block;margin-top:8px;color:var(--muted);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}#status{text-align:center;color:var(--muted);font-size:.9rem;margin-top:15px}.progress{height:7px;background:#ffffff18;border-radius:20px;overflow:hidden;margin-top:22px}#bar{height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--gold));border-radius:20px;transition:width .5s}
+.section-title{font-size:1.5rem;margin:0 0 8px}.sub{color:var(--muted);line-height:1.6;margin-top:0}.question-list{display:grid;gap:12px;margin-top:20px}.q{border:1px solid #ffffff20;background:#ffffff08;border-radius:17px;padding:16px 18px}.qhead{display:flex;align-items:center;gap:12px}.hour{flex-shrink:0;width:43px;height:43px;border-radius:50%;display:grid;place-items:center;background:#ff8fb11c;border:1px solid #ff8fb155;color:var(--pink);font-weight:800}.qtitle{font-weight:750}.qtime{font-size:.78rem;color:var(--muted);margin-top:3px}.qbody{padding:13px 0 0 55px;color:#f8eefa;line-height:1.6}.qbody p{margin:0 0 10px}
+input[type=text],textarea,select{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #ffffff30;background:#120b25;color:white;font:inherit;outline:none}textarea{min-height:76px;resize:vertical}input[type=text]:focus,textarea:focus,select:focus{border-color:var(--pink)}button{font:inherit;font-weight:750;cursor:pointer;border:0;border-radius:12px;padding:11px 16px;color:#29122f;background:linear-gradient(120deg,var(--pink),var(--gold));margin-top:10px}button:focus-visible{outline:3px solid white;outline-offset:3px}.answer{color:var(--gold);font-size:.9rem;margin-top:9px;min-height:1.2em}.locked{opacity:.65}.lock-note{font-size:.88rem;color:var(--muted);margin:13px 0 0}.letter{text-align:center}.heart{font-size:2rem;animation:pulse 1.8s infinite}footer{text-align:center;color:#b9a8cc;font-size:.8rem;padding:15px}.hint{margin-top:12px;color:var(--gold)}.hint summary{cursor:pointer}
+#editor-card{display:none;border-color:#ff8fb166;background:#1d1233f2}body.admin-mode #editor-card{display:block}.admin-label{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mint)}.notice{font-size:.9rem;color:var(--muted);line-height:1.6}.editor-question{border:1px solid #ffffff22;background:#ffffff08;border-radius:16px;padding:16px;margin:13px 0}.editor-question label{display:block;color:var(--muted);font-size:.83rem;margin:11px 0 6px}.edit-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.actions{display:flex;gap:9px;flex-wrap:wrap}.actions button{margin-top:14px}.secondary{background:#ffffff17;border:1px solid #ffffff30;color:#fff}.danger{background:#54223c;color:#fff;border:1px solid #ff8fb155}.admin-status{color:var(--mint);min-height:1.4em;font-size:.9rem;margin-top:12px}.empty{color:var(--muted);font-style:italic;padding:12px 0}.admin-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+@keyframes pulse{50%{transform:scale(1.14)}}
+@media(max-width:520px){.countdown{gap:7px}.timebox{padding:14px 3px}.num{font-size:2rem}.unit{font-size:.62rem}.qbody{padding-left:0}.wrap{padding-top:24px}.edit-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="top">
+    <div class="eyebrow">✨ Un pequeño misterio, solo para ti ✨</div>
+    <h1>Hola, <span>niña</span> 💜</h1>
+    <p class="intro">Hay algo esperándote a las <strong>6:00 p. m.</strong>… Mientras llega el momento, tendrás pequeñas preguntas y pistas para intentar descubrir tu sorpresa. ¿Lista para investigar, futura doctora? 🩺👀</p>
+  </header>
+
+  <section class="card" aria-label="Cuenta regresiva">
+    <div class="count-label">La sorpresa comienza en…</div>
+    <div class="countdown" role="timer" aria-live="off">
+      <div class="timebox"><span class="num" id="hours">00</span><span class="unit">Horas</span></div>
+      <div class="timebox"><span class="num" id="minutes">00</span><span class="unit">Minutos</span></div>
+      <div class="timebox"><span class="num" id="seconds">00</span><span class="unit">Segundos</span></div>
+      <div class="timebox"><span class="num" id="heart">♡</span><span class="unit">Latidos</span></div>
+    </div>
+    <div id="status">El reloj está contando… 💗</div>
+    <div class="progress"><div id="bar"></div></div>
+  </section>
+
+  <section class="card">
+    <h2 class="section-title">🕵️ Misión: adivina tu regalo</h2>
+    <p class="sub">Cada pregunta se desbloquea a la hora indicada. Guarda tu respuesta y ve armando tu teoría… ¡no hagas trampa! 🤭</p>
+    <div id="questions" class="question-list"></div>
+    <p class="lock-note" id="lock-note"></p>
+  </section>
+
+  <section class="card letter">
+    <div class="heart">💌</div>
+    <h2 class="section-title">Una cosa sí te puedo adelantar…</h2>
+    <p class="sub">Elegí esta sorpresa pensando en ti y en todo lo que estás construyendo. Guarda un poquito de curiosidad para las 6. 🥹💜</p>
+  </section>
+
+  <section class="card" id="editor-card">
+    <div class="admin-top"><div><div class="admin-label">🔧 Panel de edición</div><h2 class="section-title" style="margin-top:8px">Administra las preguntas</h2></div><span aria-hidden="true">🩺</span></div>
+    <p class="notice">Edita los textos, las mini pistas y la hora de desbloqueo. La vista de la página se actualiza mientras escribes y tus cambios se guardan en este navegador. Para publicar los cambios para todos en GitHub, usa <strong>Descargar página actualizada</strong> y reemplaza el archivo <code>index.html</code> de tu repositorio por el nuevo.</p>
+    <div id="editor-questions"></div>
+    <div class="actions"><button id="add-question" type="button">＋ Añadir pregunta</button><button id="export-page" type="button">⬇ Descargar página actualizada</button><button id="reset-questions" class="secondary" type="button">Restaurar preguntas iniciales</button></div>
+    <div class="admin-status" id="admin-status" role="status"></div>
+    <p class="notice">Nota: el panel se abre añadiendo <code>?admin=1</code> al final de tu enlace. No es un sistema de inicio de sesión: es una forma sencilla de mantener el panel fuera de la vista normal. Los cambios guardados en este navegador no se sincronizan automáticamente con el de tu novia; para que le aparezcan, descarga la página actualizada y vuelve a publicarla en GitHub Pages.</p>
+  </section>
+  <footer>Hecho con mucho cariño, solo para ti ✨</footer>
+</main>
+
+<script id="question-config">
+window.BIRTHDAY_QUESTIONS = [
+  {id:"q-superheroe", time:6, title:"Pista del superhéroe", prompt:"¿Qué superhéroe amas más que a nada?", hint:"Su enemigo fue el Primer Vengador."},
+  {id:"q-colores", time:7, title:"Los tres colores", prompt:"¿Cuáles son tus 3 colores favoritos?", hint:""}
+];
+</script>
+<script>
+const INITIAL_QUESTIONS = JSON.parse(JSON.stringify(window.BIRTHDAY_QUESTIONS));
+const STORE_KEY = "birthday-questions-v2";
+let questions = loadQuestions();
+function loadQuestions(){
+  try { const stored = localStorage.getItem(STORE_KEY); if(stored){ const parsed=JSON.parse(stored); if(Array.isArray(parsed)) return parsed; } } catch(e){}
+  return JSON.parse(JSON.stringify(INITIAL_QUESTIONS));
+}
+function persistQuestions(){
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(questions)); }
+  catch(e){ setAdminStatus("No se pudo guardar en este navegador. Descarga la página para conservar tus cambios."); }
+}
+const $ = id => document.getElementById(id);
+const pad = n => String(n).padStart(2,"0");
+const timeLabel = h => `${pad(h)}:00 ${h<12 ? "a. m." : "p. m."}`;
+function safeText(value){return String(value ?? "");}
+function renderPublicQuestions(){
+  const currentHour = new Date().getHours();
+  const host = $("questions"); host.innerHTML = "";
+  const ordered = [...questions].sort((a,b)=>Number(a.time)-Number(b.time));
+  let nextTime = null;
+  if(!ordered.length){host.innerHTML='<div class="empty">Todavía no hay preguntas. ¡Pronto habrá más pistas! 💜</div>'; $("lock-note").textContent=""; return;}
+  ordered.forEach((q,index)=>{
+    const hour=Number(q.time)||6; const unlocked=currentHour>=hour;
+    if(!unlocked && nextTime===null) nextTime=hour;
+    const article=document.createElement("article"); article.className="q"+(unlocked?"":" locked");
+    const head=document.createElement("div"); head.className="qhead";
+    const badge=document.createElement("div"); badge.className="hour"; badge.textContent=unlocked?"✓":"🔒";
+    const meta=document.createElement("div"); const title=document.createElement("div"); title.className="qtitle"; title.textContent=q.title||`Pregunta ${index+1}`;
+    const time=document.createElement("div"); time.className="qtime"; time.textContent=`${timeLabel(hour)} · ${unlocked?"¡Disponible!":"Se desbloquea a esta hora"}`;
+    meta.append(title,time); head.append(badge,meta); article.append(head);
+    if(unlocked){
+      const body=document.createElement("div"); body.className="qbody";
+      const p=document.createElement("p"); p.textContent=q.prompt||"Piensa en tu respuesta…";
+      const input=document.createElement("input"); input.type="text"; input.placeholder="Tu respuesta o teoría…"; input.maxLength=250; input.setAttribute("aria-label",`Respuesta: ${q.title||`Pregunta ${index+1}`}`); input.id=`answer-${q.id}`;
+      try{input.value=localStorage.getItem(`birthday-answer-${q.id}`)||"";}catch(e){}
+      const btn=document.createElement("button"); btn.type="button"; btn.textContent="Guardar mi respuesta";
+      const feedback=document.createElement("div"); feedback.className="answer";
+      btn.addEventListener("click",()=>{try{localStorage.setItem(`birthday-answer-${q.id}`,input.value.trim());feedback.textContent=input.value.trim()?"¡Respuesta guardada, detective! 💜":"Escribe tu respuesta primero 😊";}catch(e){feedback.textContent="No se pudo guardar en este navegador.";}});
+      body.append(p,input,btn,feedback);
+      if(q.hint && q.hint.trim()) { const details=document.createElement("details"); details.className="hint"; const summary=document.createElement("summary"); summary.textContent="Ver mini pista"; const hint=document.createElement("p"); hint.textContent=q.hint; details.append(summary,hint); body.append(details); }
+      article.append(body);
+    } else {const lockedText=document.createElement("div");lockedText.className="qbody";lockedText.textContent="Todavía no… vuelve cuando llegue esta hora. 🤫";article.append(lockedText);}
+    host.append(article);
+  });
+  $("lock-note").textContent=nextTime!==null?`La próxima pregunta se desbloquea a las ${timeLabel(nextTime)}. ¡Vuelve a mirar!`:"¡Todas las preguntas están desbloqueadas! Ya casi llega la sorpresa. 🎁";
+}
+function setAdminStatus(message){const el=$("admin-status"); if(el) el.textContent=message;}
+function renderEditor(){
+  const host=$("editor-questions"); host.innerHTML="";
+  if(!questions.length){host.innerHTML='<p class="empty">No hay preguntas todavía. Usa “Añadir pregunta” para crear una.</p>';return;}
+  questions.forEach((q,index)=>{
+    const box=document.createElement("div"); box.className="editor-question";
+    const heading=document.createElement("div"); heading.className="admin-top";
+    const title=document.createElement("strong"); title.textContent=`Pregunta ${index+1}`;
+    const del=document.createElement("button"); del.type="button"; del.className="danger"; del.textContent="Eliminar"; del.addEventListener("click",()=>{questions=questions.filter(x=>x.id!==q.id); persistQuestions();renderEditor();renderPublicQuestions();setAdminStatus("Pregunta eliminada.");});
+    heading.append(title,del);box.append(heading);
+    const titleLabel=document.createElement("label");titleLabel.textContent="Nombre interno / título";
+    const titleInput=document.createElement("input");titleInput.type="text";titleInput.value=q.title||"";titleInput.maxLength=100;titleInput.placeholder="Ej. Primera pista";
+    titleLabel.append(titleInput);box.append(titleLabel);
+    const timeLabelEl=document.createElement("label");timeLabelEl.textContent="Hora a la que se desbloquea";
+    const timeSelect=document.createElement("select");for(let h=6;h<=17;h++){const opt=document.createElement("option");opt.value=String(h);opt.textContent=timeLabel(h);timeSelect.append(opt);}timeSelect.value=String(q.time??6);timeLabelEl.append(timeSelect);box.append(timeLabelEl);
+    const promptLabel=document.createElement("label");promptLabel.textContent="Pregunta que verá ella";
+    const promptInput=document.createElement("textarea");promptInput.value=q.prompt||"";promptInput.maxLength=500;promptInput.placeholder="Escribe la pregunta…";promptLabel.append(promptInput);box.append(promptLabel);
+    const hintLabel=document.createElement("label");hintLabel.textContent="Mini pista (déjala vacía si no quieres mostrar ninguna)";
+    const hintInput=document.createElement("textarea");hintInput.value=q.hint||"";hintInput.maxLength=350;hintInput.placeholder="Escribe la pista opcional…";hintLabel.append(hintInput);box.append(hintLabel);
+    const update=(field,value)=>{q[field]=value;persistQuestions();renderPublicQuestions();setAdminStatus("Vista actualizada y cambios guardados en este navegador.");};
+    titleInput.addEventListener("input",()=>update("title",titleInput.value));
+    timeSelect.addEventListener("change",()=>update("time",Number(timeSelect.value)));
+    promptInput.addEventListener("input",()=>update("prompt",promptInput.value));
+    hintInput.addEventListener("input",()=>update("hint",hintInput.value));
+    host.append(box);
+  });
+}
+function addQuestion(){
+  const used=new Set(questions.map(q=>Number(q.time)));let time=6;while(time<=17&&used.has(time))time++;if(time>17)time=17;
+  const id="q-"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+  questions.push({id,time,title:"Nueva pista",prompt:"Escribe aquí tu pregunta.",hint:""});persistQuestions();renderEditor();renderPublicQuestions();setAdminStatus("Nueva pregunta añadida. ¡Edítala aquí mismo!");
+}
+function restoreQuestions(){if(!confirm("¿Restaurar las dos preguntas iniciales? Se perderán los cambios locales de preguntas."))return;questions=JSON.parse(JSON.stringify(INITIAL_QUESTIONS));persistQuestions();renderEditor();renderPublicQuestions();setAdminStatus("Preguntas iniciales restauradas.");}
+function exportPage(){
+  const clone=document.documentElement.cloneNode(true);
+  clone.querySelector("body").classList.remove("admin-mode");
+  const config=clone.querySelector("#question-config");
+  config.textContent="\nwindow.BIRTHDAY_QUESTIONS = "+JSON.stringify(questions,null,2)+";\n";
+  const output="<!DOCTYPE html>\n"+clone.outerHTML;
+  const blob=new Blob([output],{type:"text/html;charset=utf-8"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="index.html";document.body.append(a);a.click();a.remove();URL.revokeObjectURL(url);
+  setAdminStatus("¡Página descargada! Ahora reemplaza index.html en GitHub y espera a que Pages publique los cambios.");
+}
+function tick(){
+  const now=new Date();const deadline=new Date(now);deadline.setHours(18,0,0,0);const start=new Date(now);start.setHours(6,0,0,0);
+  let target=deadline;if(now>=deadline){target.setDate(target.getDate()+1);}
+  let diff=Math.max(0,target-now);
+  const hours=Math.floor(diff/3600000);const minutes=Math.floor((diff%3600000)/60000);const seconds=Math.floor((diff%60000)/1000);
+  $("hours").textContent=pad(hours);$("minutes").textContent=pad(minutes);$("seconds").textContent=pad(seconds);
+  if(now>=deadline){$("status").textContent="La hora de la sorpresa de hoy ya llegó… ¡o prepárate para mañana! 🎁💜";}
+  else{$("status").textContent=`Hasta las 6:00 p. m. · ${now.toLocaleDateString("es-PE",{weekday:"long",day:"numeric",month:"long"})}`;}
+  const elapsed=Math.max(0,Math.min(12*3600000,now-start));$("bar").style.width=`${Math.max(0,Math.min(100,elapsed/(12*3600000)*100))}%`;
+  $("heart").textContent=["♡","♥","💗","♥"][Math.floor(now.getSeconds()/15)];
+}
+if(new URLSearchParams(location.search).get("admin")==="1" || location.hash==="#editar"){document.body.classList.add("admin-mode");}
+$("add-question").addEventListener("click",addQuestion);
+$("reset-questions").addEventListener("click",restoreQuestions);
+$("export-page").addEventListener("click",exportPage);
+tick();renderEditor();renderPublicQuestions();setInterval(tick,1000);setInterval(renderPublicQuestions,30000);
+</script>
+</body>
+</html>
