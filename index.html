@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#170f2e">
-<title>Hola, niña 💜 | Una sorpresa para ti</title>
+<title>Hola, niña 💜 | La Revelación</title>
 <style>
-:root{--night:#170f2e;--plum:#2b1748;--pink:#ff8fb1;--gold:#ffe2a8;--cream:#fff8f5;--muted:#d9cce8;--mint:#a7f3d0}
+:root{--night:#170f2e;--plum:#2b1748;--pink:#ff8fb1;--gold:#ffe2a8;--cream:#fff8f5;--muted:#d9cce8;--mint:#a7f3d0;--cyan:#7dd3fc}
 *{box-sizing:border-box}
 body{margin:0;min-height:100vh;color:var(--cream);font-family:ui-rounded,"Trebuchet MS",system-ui,sans-serif;background:radial-gradient(ellipse at 50% 0%,#57306d 0%,var(--plum) 38%,var(--night) 78%);overflow-x:hidden}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.55;background-image:radial-gradient(2px 2px at 20% 30%,#fff 45%,transparent 55%),radial-gradient(1px 1px at 70% 20%,#ffe2a8 45%,transparent 55%),radial-gradient(2px 2px at 80% 75%,#fff 45%,transparent 55%),radial-gradient(1px 1px at 35% 82%,#ff8fb1 45%,transparent 55%);background-size:190px 170px,230px 210px,280px 230px,170px 190px}
@@ -14,38 +14,93 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.55;ba
 h1{font-size:clamp(2.5rem,8vw,5rem);line-height:1.02;margin:14px 0;color:#fff;text-shadow:0 0 25px #ff8fb155}h1 span{color:var(--pink)}
 .intro{max-width:600px;margin:0 auto;color:var(--muted);font-size:1.05rem;line-height:1.7}.card{background:#ffffff0d;border:1px solid #ffffff25;border-radius:26px;backdrop-filter:blur(10px);box-shadow:0 20px 70px #08031455;padding:clamp(20px,4vw,36px);margin:20px 0}
 .count-label{text-align:center;color:var(--gold);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase}.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0 10px}.timebox{padding:17px 6px;border-radius:18px;text-align:center;background:linear-gradient(160deg,#ffffff17,#ffffff08);border:1px solid #ffffff1b}
-.num{display:block;font-size:clamp(2rem,7vw,3.8rem);font-variant-numeric:tabular-nums;font-weight:800;line-height:1.1;color:white}.unit{display:block;margin-top:8px;color:var(--muted);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}#status{text-align:center;color:var(--muted);font-size:.9rem;margin-top:15px}.progress{height:7px;background:#ffffff18;border-radius:20px;overflow:hidden;margin-top:22px}#bar{height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--gold));border-radius:20px;transition:width .5s}
+.num{display:block;font-size:clamp(2rem,7vw,3.8rem);font-variant-numeric:tabular-nums;font-weight:800;line-height:1.1;color:white}.unit{display:block;margin-top:8px;color:var(--muted);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}#status,#oct30-status{text-align:center;color:var(--muted);font-size:.9rem;margin-top:15px}.progress{height:7px;background:#ffffff18;border-radius:20px;overflow:hidden;margin-top:22px}#bar,#oct30-bar{height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--gold));border-radius:20px;transition:width .5s}
 .section-title{font-size:1.5rem;margin:0 0 8px}.sub{color:var(--muted);line-height:1.6;margin-top:0}.question-list{display:grid;gap:12px;margin-top:20px}.q{border:1px solid #ffffff20;background:#ffffff08;border-radius:17px;padding:16px 18px}.qhead{display:flex;align-items:center;gap:12px}.hour{flex-shrink:0;width:43px;height:43px;border-radius:50%;display:grid;place-items:center;background:#ff8fb11c;border:1px solid #ff8fb155;color:var(--pink);font-weight:800}.qtitle{font-weight:750}.qtime{font-size:.78rem;color:var(--muted);margin-top:3px}.qbody{padding:13px 0 0 55px;color:#f8eefa;line-height:1.6}.qbody p{margin:0 0 10px}
-input[type=text],textarea,select{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #ffffff30;background:#120b25;color:white;font:inherit;outline:none}textarea{min-height:76px;resize:vertical}input[type=text]:focus,textarea:focus,select:focus{border-color:var(--pink)}button{font:inherit;font-weight:750;cursor:pointer;border:0;border-radius:12px;padding:11px 16px;color:#29122f;background:linear-gradient(120deg,var(--pink),var(--gold));margin-top:10px}button:focus-visible{outline:3px solid white;outline-offset:3px}.answer{color:var(--gold);font-size:.9rem;margin-top:9px;min-height:1.2em}.locked{opacity:.65}.lock-note{font-size:.88rem;color:var(--muted);margin:13px 0 0}.letter{text-align:center}.heart{font-size:2rem;animation:pulse 1.8s infinite}footer{text-align:center;color:#b9a8cc;font-size:.8rem;padding:15px}.hint{margin-top:12px;color:var(--gold)}.hint summary{cursor:pointer}
+input[type=text],input[type=datetime-local],textarea,select{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #ffffff30;background:#120b25;color:white;font:inherit;outline:none}textarea{min-height:76px;resize:vertical}input[type=text]:focus,input[type=datetime-local]:focus,textarea:focus,select:focus{border-color:var(--pink)}button,.btn-link{display:inline-block;text-decoration:none;text-align:center;font:inherit;font-weight:750;cursor:pointer;border:0;border-radius:12px;padding:12px 18px;color:#29122f;background:linear-gradient(120deg,var(--pink),var(--gold));margin-top:10px;transition:transform .15s,box-shadow .15s}button:hover,.btn-link:hover{transform:translateY(-1px);box-shadow:0 8px 24px #ff8fb144}button:focus-visible,.btn-link:focus-visible{outline:3px solid white;outline-offset:3px}.answer{color:var(--gold);font-size:.9rem;margin-top:9px;min-height:1.2em}.locked{opacity:.65}.lock-note{font-size:.88rem;color:var(--muted);margin:13px 0 0}.letter{text-align:center}.heart{font-size:2rem;animation:pulse 1.8s infinite}footer{text-align:center;color:#b9a8cc;font-size:.8rem;padding:15px}.hint{margin-top:12px;color:var(--gold)}.hint summary{cursor:pointer}
+.oct30-card{border:1px solid #ffe2a855;background:linear-gradient(165deg,#2a1447cc,#140b29ee);box-shadow:0 0 50px #ff8fb122}
+.portal-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.portal-box{border:1px solid #ffffff26;background:#ffffff0a;border-radius:20px;padding:20px;display:flex;flex-direction:column;justify-content:space-between}
+.portal-box.stark{border-color:#7dd3fc55;background:linear-gradient(160deg,#0c243dcc,#120d28cc)}
+.portal-badge{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.portal-box.stark .portal-badge{color:var(--cyan)}
+.portal-title{font-size:1.2rem;font-weight:800;margin:0 0 8px;color:#fff}
+.portal-desc{font-size:.92rem;color:var(--muted);line-height:1.55;margin:0 0 14px}
+.btn-stark{background:linear-gradient(120deg,#38bdf8,#a7f3d0);color:#061320}
+.portal-Alert{color:var(--gold);font-size:.85rem;margin-top:10px;min-height:1.2em}
 #editor-card{display:none;border-color:#ff8fb166;background:#1d1233f2}body.admin-mode #editor-card{display:block}.admin-label{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mint)}.notice{font-size:.9rem;color:var(--muted);line-height:1.6}.editor-question{border:1px solid #ffffff22;background:#ffffff08;border-radius:16px;padding:16px;margin:13px 0}.editor-question label{display:block;color:var(--muted);font-size:.83rem;margin:11px 0 6px}.edit-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.actions{display:flex;gap:9px;flex-wrap:wrap}.actions button{margin-top:14px}.secondary{background:#ffffff17;border:1px solid #ffffff30;color:#fff}.danger{background:#54223c;color:#fff;border:1px solid #ff8fb155}.admin-status{color:var(--mint);min-height:1.4em;font-size:.9rem;margin-top:12px}.empty{color:var(--muted);font-style:italic;padding:12px 0}.admin-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.saved-answer{border:1px solid #ffffff22;background:#ffffff08;border-radius:14px;padding:13px 15px;margin:10px 0}.saved-answer .answer-title{font-weight:750;color:var(--gold);margin-bottom:5px}.saved-answer .answer-text{white-space:pre-wrap;overflow-wrap:anywhere}.saved-answer .answer-meta{font-size:.78rem;color:var(--muted);margin-top:7px}.answer-tools{display:flex;gap:8px;flex-wrap:wrap}.answer-tools button{margin-top:8px}
 .sync-box{border:1px solid #a7f3d055;background:#a7f3d012;border-radius:16px;padding:15px;margin:14px 0}
 @keyframes pulse{50%{transform:scale(1.14)}}
+@media(max-width:640px){.portal-grid{grid-template-columns:1fr}}
 @media(max-width:520px){.countdown{gap:7px}.timebox{padding:14px 3px}.num{font-size:2rem}.unit{font-size:.62rem}.qbody{padding-left:0}.wrap{padding-top:24px}.edit-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <main class="wrap">
   <header class="top">
-    <div class="eyebrow">✨ Un pequeño misterio, solo para ti ✨</div>
+    <div class="eyebrow">✨ La revelación ha comenzado ✨</div>
     <h1>Hola, <span>niña</span> 💜</h1>
-    <p class="intro">Hay algo esperándote a las <strong>6:00 p. m.</strong>… Mientras llega el momento, tendrás pequeñas preguntas y pistas cada hora para intentar descubrir tus sorpresas. ¿Lista para investigar, futura doctora? 🩺👀</p>
+    <p class="intro">Has completado las preguntas y la primera etapa del misterio se ha desbloqueado. Ahora, nuestra mirada está puesta en el <strong>30 de octubre</strong>. Revisa tus accesos a continuación. 🩺👀</p>
   </header>
 
-  <section class="card" aria-label="Cuenta regresiva">
-    <div class="count-label">La sorpresa comienza en…</div>
+  <!-- GRAN CONTADOR AL 30 DE OCTUBRE + 2 LINKS -->
+  <section class="card oct30-card" id="oct30-section" aria-label="Cuenta regresiva al 30 de octubre">
+    <div class="count-label">✨ Etapa 2 · Cuenta Regresiva Oficial hacia Nuestro Encuentro ✨</div>
+    <h2 class="section-title" style="text-align:center;margin-top:10px;font-size:clamp(1.5rem,4vw,2.2rem)">Rumbo al 30 de Octubre 💜🗓️</h2>
+    <p class="sub" style="text-align:center;max-width:620px;margin:0 auto 18px">Cada respuesta tuya construyó este momento. Aquí tienes la cuenta regresiva exacta para vernos y los accesos a tus sorpresas:</p>
+
     <div class="countdown" role="timer" aria-live="off">
+      <div class="timebox"><span class="num" id="oct-days">00</span><span class="unit">Días</span></div>
+      <div class="timebox"><span class="num" id="oct-hours">00</span><span class="unit">Horas</span></div>
+      <div class="timebox"><span class="num" id="oct-minutes">00</span><span class="unit">Minutos</span></div>
+      <div class="timebox"><span class="num" id="oct-seconds">00</span><span class="unit">Segundos</span></div>
+    </div>
+    <div id="oct30-status">Sincronizando coordenadas para el 30 de octubre… 💫</div>
+    <div class="progress"><div id="oct30-bar"></div></div>
+
+    <div class="portal-grid">
+      <!-- LINK 1: CHILI'S -->
+      <div class="portal-box">
+        <div>
+          <div class="portal-badge">📍 Coordenada de Encuentro · Día 30</div>
+          <h3 class="portal-title" id="location-title-display">Cita Especial en Chili's 🌶️💜</h3>
+          <p class="portal-desc" id="location-desc-display">El lugar perfecto que elegiste para nuestra salida del 30 de octubre. Yo estaré ahí esperándote.</p>
+        </div>
+        <div>
+          <a href="#" id="location-link-btn" class="btn-link" target="_blank" rel="noopener">🗺️ Ver Ubicación en el Mapa</a>
+          <div class="portal-Alert" id="location-feedback"></div>
+        </div>
+      </div>
+
+      <!-- LINK 2: PROYECTO MEDICINA IA -->
+      <div class="portal-box stark">
+        <div>
+          <div class="portal-badge">🩺 Proyecto Stark Medical HUD · IA</div>
+          <h3 class="portal-title" id="medai-title-display">Asistente Médico Holográfico 3D</h3>
+          <p class="portal-desc" id="medai-desc-display">Tu portal interactivo estilo J.A.R.V.I.S. diseñado exclusivamente para ti. Navega por el cuerpo humano y repasa cirugías.</p>
+        </div>
+        <div>
+          <a href="#" id="medai-link-btn" class="btn-link btn-stark" target="_blank" rel="noopener">🧬 Abrir Proyecto de Medicina IA</a>
+          <div class="portal-Alert" id="medai-feedback"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" aria-label="Cuenta regresiva de hoy">
+    <div class="count-label">Etapa 1 · Las Pistas Iniciales</div>
+    <div class="countdown" role="timer" aria-live="off" style="opacity: 0.5;">
       <div class="timebox"><span class="num" id="hours">00</span><span class="unit">Horas</span></div>
       <div class="timebox"><span class="num" id="minutes">00</span><span class="unit">Minutos</span></div>
       <div class="timebox"><span class="num" id="seconds">00</span><span class="unit">Segundos</span></div>
-      <div class="timebox"><span class="num" id="heart">♡</span><span class="unit">Latidos</span></div>
+      <div class="timebox"><span class="num" id="heart">💗</span><span class="unit">Latidos</span></div>
     </div>
-    <div id="status">El reloj está contando… 💗</div>
-    <div class="progress"><div id="bar"></div></div>
+    <div id="status">🎉 <strong>¡ETAPA 1 COMPLETADA!</strong> Revisa arriba el reloj del 30 de Octubre. 💜🩺</div>
+    <div class="progress"><div id="bar" style="width: 100%;"></div></div>
   </section>
 
   <section class="card">
-    <h2 class="section-title">🕵️‍♀️ Misión: adivina tu regalo</h2>
-    <p class="sub">Cada pregunta se desbloquea a la hora indicada. Al guardar tu respuesta, desbloquearás una mini pista para ir armando tu teoría… ¡no hagas trampa! 🤭</p>
+    <h2 class="section-title">🕵️‍♀️ Tu Bitácora de Respuestas</h2>
+    <p class="sub">Aquí están todas las respuestas y pistas que desbloqueaste hoy. Guárdalas bien en tu memoria.</p>
     <div id="questions" class="question-list"></div>
     <p class="lock-note" id="lock-note"></p>
   </section>
@@ -53,37 +108,26 @@ input[type=text],textarea,select{width:100%;padding:12px 14px;border-radius:12px
   <section class="card letter" id="final-card">
     <div class="heart">💌</div>
     <h2 class="section-title">Una cosa sí te puedo adelantar…</h2>
-    <p class="sub">Diseñé cada parte de esta sorpresa pensando en tu vocación, en lo linda que eres y en todo lo que estás construyendo. Guarda un poquito de curiosidad para las 6:00 p. m. 🥹💜</p>
+    <p class="sub">Diseñé cada parte de esta sorpresa pensando en tu vocación, en lo linda que eres y en todo lo que estás construyendo. Nos vemos el 30. 🥹💜</p>
   </section>
 
+  <!-- PANEL DE ADMINISTRACIÓN (?admin=1) -->
   <section class="card" id="editor-card">
     <div class="admin-top"><div><div class="admin-label">🔧 Panel Táctico Viernes</div><h2 class="section-title" style="margin-top:8px">Administración y Telemetría en Tiempo Real</h2></div><span aria-hidden="true">🩺</span></div>
     
     <div class="sync-box">
-      <div class="admin-label">📡 Canal de Sincronización en Vivo (Gratis y Automático)</div>
-      <p class="notice" style="margin:6px 0 10px">Las respuestas que ella guarde en su celular se envían automáticamente a este código de canal en la nube y aparecen abajo en tiempo real. También puedes pegar un Webhook de Discord opcional si quieres recibir alertas en tu servidor.</p>
-      <div class="edit-grid">
+      <div class="admin-label">📡 Canal de Sincronización en Vivo (No cambiar para conservar respuestas)</div>
+      <div class="edit-grid" style="margin-top:8px">
         <div>
           <label style="font-size:.8rem;color:var(--mint)">Código secreto de canal (ntfy.sh)</label>
-          <input type="text" id="sync-topic-input" placeholder="Ej. viernes-doctora-sorpresa-bpg-2026">
-        </div>
-        <div>
-          <label style="font-size:.8rem;color:var(--mint)">Webhook de Discord (Opcional)</label>
-          <input type="text" id="discord-webhook-input" placeholder="https://discord.com/api/webhooks/...">
+          <input type="text" id="sync-topic-input" placeholder="viernes-doctora-sorpresa-bpg-2026">
         </div>
       </div>
     </div>
 
-    <p class="notice">Si editas las preguntas o el canal, usa <strong>Descargar página actualizada</strong> y sube el nuevo <code>index.html</code> a GitHub.</p>
-    <div id="editor-questions"></div>
-    <div class="actions">
-      <button id="add-question" type="button">＋ Añadir pregunta</button>
-      <button id="export-page" type="button">⬇ Descargar página actualizada</button>
-      <button id="reset-questions" class="secondary" type="button">Restaurar las 12 preguntas base</button>
+    <div class="admin-top" style="margin-top:18px">
+      <div><div class="admin-label">📬 Telemetría recibida</div><h2 class="section-title" style="margin-top:6px">Respuestas de ella en tiempo real</h2></div>
     </div>
-    <div class="admin-status" id="admin-status" role="status"></div>
-    <hr style="border:0;border-top:1px solid #ffffff22;margin:26px 0">
-    <div class="admin-top"><div><div class="admin-label">📬 Telemetría recibida</div><h2 class="section-title" style="margin-top:8px">Respuestas de ella en tiempo real</h2></div></div>
     <div class="answer-tools">
       <button id="refresh-answers" type="button">↻ Sincronizar respuestas de la nube ahora</button>
       <button id="export-answers" class="secondary" type="button">⬇ Descargar respuestas (CSV)</button>
@@ -98,6 +142,18 @@ window.SYNC_CONFIG = {
   topic: "viernes-doctora-sorpresa-bpg-2026",
   discordWebhook: ""
 };
+
+// ESTA ES LA CONFIGURACIÓN OFICIAL DE REVELACIÓN INYECTADA
+window.REVEAL_CONFIG = {
+  visibility: "always",
+  targetDate: "2026-10-30T18:00",
+  locationName: "Cita Especial en Chili's 🌶️💜",
+  locationUrl: "https://share.google/GHHQ4guh7k9dxRQu5",
+  medAiTitle: "Asistente Médico Holográfico 3D",
+  // TODO: Reemplaza este link de abajo por el link de tu nuevo repositorio de medicina
+  medAiUrl: "https://tu-usuario.github.io/tu-repo-de-medicina" 
+};
+
 window.BIRTHDAY_QUESTIONS = [
   {
     id: "q-01-superheroe",
@@ -189,7 +245,10 @@ window.BIRTHDAY_QUESTIONS = [
 const INITIAL_QUESTIONS = JSON.parse(JSON.stringify(window.BIRTHDAY_QUESTIONS));
 const STORE_KEY = "birthday-questions-v4";
 const CLOUD_ANSWERS_KEY = "birthday-cloud-answers-v4";
+const REVEAL_STORE_KEY = "birthday-reveal-config-v4";
+
 let questions = loadQuestions();
+let revealConfig = window.REVEAL_CONFIG; // Ahora lee directamente la configuracion oficial hardcodeada
 let cloudAnswers = [];
 
 function loadQuestions(){
@@ -202,10 +261,7 @@ function loadQuestions(){
   } catch(e){}
   return JSON.parse(JSON.stringify(INITIAL_QUESTIONS));
 }
-function persistQuestions(){
-  try { localStorage.setItem(STORE_KEY, JSON.stringify(questions)); }
-  catch(e){ setAdminStatus("No se pudo guardar localmente. Descarga la página para conservar cambios."); }
-}
+
 const $ = id => document.getElementById(id);
 const pad = n => String(n).padStart(2,"0");
 const timeLabel = h => `${pad(h > 12 ? h - 12 : h)}:00 ${h < 12 ? "a. m." : "p. m."}`;
@@ -218,15 +274,6 @@ async function transmitAnswerToCloud(payload){
     tasks.push(fetch(`https://ntfy.sh/${encodeURIComponent(topic)}`, {
       method: "POST",
       body: JSON.stringify(payload)
-    }));
-  }
-  if(cfg.discordWebhook && cfg.discordWebhook.startsWith("http")){
-    tasks.push(fetch(cfg.discordWebhook.trim(), {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        content: `🩺 **Nueva respuesta de la futura Doctora**\n**${payload.title}**\n> *${payload.prompt}*\n💬 **Respuesta:** ${payload.answer}\n🕒 ${new Date(payload.when).toLocaleString("es-PE")}`
-      })
     }));
   }
   await Promise.allSettled(tasks);
@@ -242,166 +289,140 @@ async function fetchAnswersFromCloud(){
     const text = await res.text();
     const lines = text.split("\n").map(l => l.trim()).filter(Boolean);
     const parsedList = [];
+    let restoredAnyAnswer = false;
+
     lines.forEach(line => {
       try {
         const evt = JSON.parse(line);
         if(evt.event === "message" && evt.message){
           const data = JSON.parse(evt.message);
-          if(data && data.answer){ parsedList.push(data); }
+          if(data && data.answer && data.id){
+            parsedList.push(data);
+            const existing = localStorage.getItem(`birthday-answer-${data.id}`);
+            if(!existing || existing.trim() === ""){
+              localStorage.setItem(`birthday-answer-${data.id}`, data.answer);
+              if(data.when) localStorage.setItem(`birthday-answer-time-${data.id}`, data.when);
+              restoredAnyAnswer = true;
+            }
+          }
         }
       } catch(e){}
     });
+
     if(parsedList.length){
       cloudAnswers = parsedList;
       try { localStorage.setItem(CLOUD_ANSWERS_KEY, JSON.stringify(cloudAnswers)); } catch(e){}
       renderSavedAnswers();
     }
+    if(restoredAnyAnswer){
+      renderPublicQuestions();
+    }
   } catch(e){}
 }
 
 function renderPublicQuestions(){
-  const currentHour = new Date().getHours();
+  const currentHour = 23; // Todo desbloqueado
   const host = $("questions"); host.innerHTML = "";
   const ordered = [...questions].sort((a,b)=>Number(a.time)-Number(b.time));
-  let nextTime = null;
-  if(!ordered.length){
-    host.innerHTML='<div class="empty">Todavía no hay preguntas. ¡Pronto habrá más pistas! 💜</div>';
-    $("lock-note").textContent="";
-    return;
-  }
+  
   ordered.forEach((q,index)=>{
     const hour = Number(q.time)||6;
-    const unlocked = currentHour >= hour;
-    if(!unlocked && nextTime === null) nextTime = hour;
     const article = document.createElement("article");
-    article.className = "q" + (unlocked ? "" : " locked");
+    article.className = "q";
     const head = document.createElement("div"); head.className = "qhead";
-    const badge = document.createElement("div"); badge.className = "hour"; badge.textContent = unlocked ? "✓" : "🔒";
+    const badge = document.createElement("div"); badge.className = "hour"; badge.textContent = "✓";
     const meta = document.createElement("div");
     const title = document.createElement("div"); title.className = "qtitle"; title.textContent = q.title || `Pregunta ${index+1}`;
-    const time = document.createElement("div"); time.className = "qtime"; time.textContent = `${timeLabel(hour)} · ${unlocked ? "¡Disponible!" : "Se desbloquea a esta hora"}`;
+    const time = document.createElement("div"); time.className = "qtime"; time.textContent = `${timeLabel(hour)} · ¡Disponible!`;
     meta.append(title,time); head.append(badge,meta); article.append(head);
 
-    if(unlocked){
-      const body = document.createElement("div"); body.className = "qbody";
-      const p = document.createElement("p"); p.textContent = q.prompt || "Piensa en tu respuesta…";
-      let savedVal = "";
-      try { savedVal = localStorage.getItem(`birthday-answer-${q.id}`) || ""; } catch(e){}
-      const input = document.createElement("input");
-      input.type = "text"; input.placeholder = "Escribe tu respuesta o teoría aquí…";
-      input.maxLength = 350; input.value = savedVal;
-      input.setAttribute("aria-label", `Respuesta: ${q.title || `Pregunta ${index+1}`}`);
+    const body = document.createElement("div"); body.className = "qbody";
+    const p = document.createElement("p"); p.textContent = q.prompt || "Piensa en tu respuesta…";
+    let savedVal = "";
+    try { savedVal = localStorage.getItem(`birthday-answer-${q.id}`) || ""; } catch(e){}
+    const input = document.createElement("input");
+    input.type = "text"; input.placeholder = "Escribe tu respuesta o teoría aquí…";
+    input.maxLength = 350; input.value = savedVal;
+    input.setAttribute("aria-label", `Respuesta: ${q.title || `Pregunta ${index+1}`}`);
 
-      const btn = document.createElement("button"); btn.type = "button"; btn.textContent = "Guardar mi respuesta y ver pista";
-      const feedback = document.createElement("div"); feedback.className = "answer";
+    const btn = document.createElement("button"); btn.type = "button";
+    btn.textContent = savedVal ? "Actualizar mi respuesta" : "Guardar mi respuesta y ver pista";
+    const feedback = document.createElement("div"); feedback.className = "answer";
+    if(savedVal) feedback.textContent = "✓ Respuesta guardada en tu bitácora.";
 
-      const details = document.createElement("details"); details.className = "hint";
-      details.style.display = savedVal ? "block" : "none";
-      const summary = document.createElement("summary"); summary.textContent = "✨ Ver mini pista desbloqueada";
-      const hintP = document.createElement("p"); hintP.textContent = q.hint || "";
-      details.append(summary, hintP);
+    const details = document.createElement("details"); details.className = "hint";
+    details.style.display = savedVal ? "block" : "none";
+    const summary = document.createElement("summary"); summary.textContent = "✨ Ver mini pista desbloqueada";
+    const hintP = document.createElement("p"); hintP.textContent = q.hint || "";
+    details.append(summary, hintP);
 
-      btn.addEventListener("click", async ()=>{
-        const value = input.value.trim();
-        if(!value){ feedback.textContent = "Escribe tu respuesta primero 😊"; return; }
-        const nowIso = new Date().toISOString();
-        try {
-          localStorage.setItem(`birthday-answer-${q.id}`, value);
-          localStorage.setItem(`birthday-answer-time-${q.id}`, nowIso);
-        } catch(e){}
-        feedback.textContent = "Guardando y desbloqueando pista… 📡💜";
-        await transmitAnswerToCloud({
-          id: q.id,
-          title: q.title || `Pregunta ${index+1}`,
-          prompt: q.prompt || "",
-          answer: value,
-          when: nowIso
-        });
-        feedback.textContent = "¡Respuesta guardada, detective! Aquí tienes tu pista 👇💜";
-        if(q.hint && q.hint.trim()){
-          details.style.display = "block";
-          details.open = true;
-        }
-        renderSavedAnswers();
+    btn.addEventListener("click", async ()=>{
+      const value = input.value.trim();
+      if(!value){ feedback.textContent = "Escribe tu respuesta primero 😊"; return; }
+      const nowIso = new Date().toISOString();
+      try {
+        localStorage.setItem(`birthday-answer-${q.id}`, value);
+        localStorage.setItem(`birthday-answer-time-${q.id}`, nowIso);
+      } catch(e){}
+      btn.textContent = "Actualizar mi respuesta";
+      feedback.textContent = "Guardando y enviando a servidor… 📡💜";
+      await transmitAnswerToCloud({
+        id: q.id,
+        title: q.title || `Pregunta ${index+1}`,
+        prompt: q.prompt || "",
+        answer: value,
+        when: nowIso
       });
+      feedback.textContent = "¡Respuesta guardada, detective! Aquí tienes tu pista 👇💜";
+      if(q.hint && q.hint.trim()){
+        details.style.display = "block";
+        details.open = true;
+      }
+      renderSavedAnswers();
+    });
 
-      body.append(p, input, btn, feedback);
-      if(q.hint && q.hint.trim()) body.append(details);
-      article.append(body);
-    } else {
-      const lockedText = document.createElement("div");
-      lockedText.className = "qbody";
-      lockedText.textContent = "Todavía no… vuelve cuando el reloj marque esta hora. 🤫";
-      article.append(lockedText);
-    }
+    body.append(p, input, btn, feedback);
+    if(q.hint && q.hint.trim()) body.append(details);
+    article.append(body);
     host.append(article);
   });
-  $("lock-note").textContent = nextTime !== null
-    ? `La próxima pregunta se desbloquea a las ${timeLabel(nextTime)}. ¡Vuelve a mirar!`
-    : "¡Todas las preguntas están desbloqueadas! Ya casi llega la hora. 🎁";
 }
 
-function setAdminStatus(message){ const el = $("admin-status"); if(el) el.textContent = message; }
+function renderRevealSection(){
+  const sec = $("oct30-section");
+  if(!sec) return;
+  sec.style.display = "block";
 
-function renderEditor(){
-  const host = $("editor-questions"); host.innerHTML = "";
-  const topicInput = $("sync-topic-input");
-  const discordInput = $("discord-webhook-input");
-  if(topicInput && window.SYNC_CONFIG){
-    topicInput.value = window.SYNC_CONFIG.topic || "";
-    topicInput.oninput = () => { window.SYNC_CONFIG.topic = topicInput.value.trim(); setAdminStatus("Canal actualizado. Recuerda descargar la página para publicar."); };
-  }
-  if(discordInput && window.SYNC_CONFIG){
-    discordInput.value = window.SYNC_CONFIG.discordWebhook || "";
-    discordInput.oninput = () => { window.SYNC_CONFIG.discordWebhook = discordInput.value.trim(); setAdminStatus("Webhook actualizado. Recuerda descargar la página para publicar."); };
-  }
+  $("location-title-display").textContent = revealConfig.locationName;
+  $("medai-title-display").textContent = revealConfig.medAiTitle;
 
-  if(!questions.length){
-    host.innerHTML='<p class="empty">No hay preguntas todavía. Usa “Añadir pregunta” para crear una.</p>';
-    return;
-  }
-  questions.forEach((q,index)=>{
-    const box = document.createElement("div"); box.className = "editor-question";
-    const heading = document.createElement("div"); heading.className = "admin-top";
-    const title = document.createElement("strong"); title.textContent = `Pregunta ${index+1} (${timeLabel(Number(q.time)||6)})`;
-    const del = document.createElement("button"); del.type = "button"; del.className = "danger"; del.textContent = "Eliminar";
-    del.addEventListener("click",()=>{
-      questions = questions.filter(x=>x.id!==q.id);
-      persistQuestions(); renderEditor(); renderPublicQuestions();
-      setAdminStatus("Pregunta eliminada.");
-    });
-    heading.append(title,del); box.append(heading);
-
-    const titleLabel = document.createElement("label"); titleLabel.textContent = "Título de la misión";
-    const titleInput = document.createElement("input"); titleInput.type = "text"; titleInput.value = q.title||"";
-    titleLabel.append(titleInput); box.append(titleLabel);
-
-    const timeLabelEl = document.createElement("label"); timeLabelEl.textContent = "Hora de desbloqueo";
-    const timeSelect = document.createElement("select");
-    for(let h=6;h<=17;h++){
-      const opt = document.createElement("option"); opt.value = String(h); opt.textContent = timeLabel(h);
-      timeSelect.append(opt);
-    }
-    timeSelect.value = String(q.time??6); timeLabelEl.append(timeSelect); box.append(timeLabelEl);
-
-    const promptLabel = document.createElement("label"); promptLabel.textContent = "Pregunta que verá ella";
-    const promptInput = document.createElement("textarea"); promptInput.value = q.prompt||"";
-    promptLabel.append(promptInput); box.append(promptLabel);
-
-    const hintLabel = document.createElement("label"); hintLabel.textContent = "Mini pista (se desbloquea cuando ella responde)";
-    const hintInput = document.createElement("textarea"); hintInput.value = q.hint||"";
-    hintLabel.append(hintInput); box.append(hintLabel);
-
-    const update = (field,value)=>{
-      q[field] = value; persistQuestions(); renderPublicQuestions();
-      setAdminStatus("Cambios guardados en vista previa.");
+  const locBtn = $("location-link-btn");
+  const locUrl = (revealConfig.locationUrl || "").trim();
+  if(locUrl && locUrl !== "#"){
+    locBtn.href = locUrl;
+    locBtn.onclick = null;
+    $("location-feedback").textContent = "";
+  } else {
+    locBtn.href = "#oct30-section";
+    locBtn.onclick = (e) => {
+      e.preventDefault();
+      $("location-feedback").textContent = "🕵️‍♀️ ¡Coordenadas en proceso! Se actualizará pronto 💜";
     };
-    titleInput.addEventListener("input",()=>update("title",titleInput.value));
-    timeSelect.addEventListener("change",()=>{ update("time",Number(timeSelect.value)); renderEditor(); });
-    promptInput.addEventListener("input",()=>update("prompt",promptInput.value));
-    hintInput.addEventListener("input",()=>update("hint",hintInput.value));
-    host.append(box);
-  });
+  }
+
+  const aiBtn = $("medai-link-btn");
+  const aiUrl = (revealConfig.medAiUrl || "").trim();
+  if(aiUrl && aiUrl !== "#" && aiUrl !== "https://tu-usuario.github.io/tu-repo-de-medicina"){
+    aiBtn.href = aiUrl;
+    aiBtn.onclick = null;
+    $("medai-feedback").textContent = "";
+  } else {
+    aiBtn.href = "#oct30-section";
+    aiBtn.onclick = (e) => {
+      e.preventDefault();
+      $("medai-feedback").textContent = "🩺 Inicializando servidores de J.A.R.V.I.S. Médico... Tu acceso directo se activará aquí en breve ✨ (Falta agregar el link en GitHub)";
+    };
+  }
 }
 
 function getSavedAnswers(){
@@ -443,101 +464,55 @@ function renderSavedAnswers(){
     const question = document.createElement("div"); question.className = "notice"; question.textContent = item.prompt;
     const answer = document.createElement("div"); answer.className = "answer-text"; answer.textContent = item.answer;
     card.append(title,question,answer);
-    if(item.when){
-      const meta = document.createElement("div"); meta.className = "answer-meta";
-      const d = new Date(item.when);
-      meta.textContent = "Recibida: " + (Number.isNaN(d.getTime()) ? item.when : d.toLocaleString("es-PE"));
-      card.append(meta);
-    }
     host.append(card);
   });
 }
 
-function exportAnswers(){
-  const answers = getSavedAnswers();
-  if(!answers.length){ setAdminStatus("No hay respuestas registradas todavía."); return; }
-  const rows = [["Pregunta","Texto","Respuesta","Fecha"], ...answers.map(a=>[a.title,a.prompt,a.answer,a.when])];
-  const csv = rows.map(row=>row.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(",")).join("\r\n");
-  const blob = new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a"); a.href = url; a.download = "respuestas-doctora.csv";
-  document.body.append(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-  setAdminStatus("Historial descargado como CSV.");
-}
-
-function addQuestion(){
-  const used = new Set(questions.map(q=>Number(q.time)));
-  let time = 6; while(time<=17 && used.has(time)) time++; if(time>17) time = 17;
-  const id = "q-"+Date.now().toString(36);
-  questions.push({id,time,title:"Nueva pista",prompt:"Escribe aquí tu pregunta.",hint:"Escribe aquí la mini pista."});
-  persistQuestions(); renderEditor(); renderPublicQuestions();
-  setAdminStatus("Nueva pregunta añadida.");
-}
-
-function restoreQuestions(){
-  if(!confirm("¿Restaurar las 12 preguntas diseñadas por Viernes?")) return;
-  questions = JSON.parse(JSON.stringify(INITIAL_QUESTIONS));
-  persistQuestions(); renderEditor(); renderPublicQuestions();
-  setAdminStatus("Las 12 preguntas base han sido restauradas.");
-}
-
-function exportPage(){
-  const clone = document.documentElement.cloneNode(true);
-  clone.querySelector("body").classList.remove("admin-mode");
-  const config = clone.querySelector("#question-config");
-  config.textContent = "\nwindow.SYNC_CONFIG = " + JSON.stringify(window.SYNC_CONFIG, null, 2) + ";\nwindow.BIRTHDAY_QUESTIONS = " + JSON.stringify(questions, null, 2) + ";\n";
-  const output = "<!DOCTYPE html>\n" + clone.outerHTML;
-  const blob = new Blob([output],{type:"text/html;charset=utf-8"});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a"); a.href = url; a.download = "index.html";
-  document.body.append(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-  setAdminStatus("¡index.html descargado! Súbelo a tu repositorio de GitHub.");
-}
-
 function tick(){
   const now = new Date();
-  const deadline = new Date(now); deadline.setHours(18,0,0,0);
-  const start = new Date(now); start.setHours(6,0,0,0);
+  
+  // Etapa 2: Gran Contador hacia el 30 de Octubre
+  const octTarget = new Date(revealConfig.targetDate || "2026-10-30T18:00:00");
+  const octStart = new Date(2026, 9, 16, 18, 0, 0);
+  const totalOctSpan = Math.max(1, octTarget - octStart);
+  const octDiff = Math.max(0, octTarget - now);
 
-  if(now >= deadline){
-    $("hours").textContent = "00";
-    $("minutes").textContent = "00";
-    $("seconds").textContent = "00";
-    $("status").innerHTML = "🎉 <strong>¡LLEGÓ LA HORA, FUTURA DOCTORA!</strong> La primera parte de tu sorpresa está desbloqueada. 💜🩺";
-    $("bar").style.width = "100%";
-    $("heart").textContent = "💗";
-    return;
+  if(octDiff <= 0){
+    $("oct-days").textContent = "00";
+    $("oct-hours").textContent = "00";
+    $("oct-minutes").textContent = "00";
+    $("oct-seconds").textContent = "00";
+    $("oct30-status").innerHTML = "🎉 <strong>¡LLEGÓ EL DÍA!</strong> Nos vemos en un rato. 💜✨";
+    $("oct30-bar").style.width = "100%";
+  } else {
+    const d = Math.floor(octDiff / 86400000);
+    const h = Math.floor((octDiff % 86400000) / 3600000);
+    const m = Math.floor((octDiff % 3600000) / 60000);
+    const s = Math.floor((octDiff % 60000) / 1000);
+    $("oct-days").textContent = pad(d);
+    $("oct-hours").textContent = pad(h);
+    $("oct-minutes").textContent = pad(m);
+    $("oct-seconds").textContent = pad(s);
+    $("oct30-status").textContent = `Tiempo restante para vernos el 30 de octubre · ¡Prepárate, futura doctora! 🩺💜`;
+    const octElapsed = Math.max(0, Math.min(totalOctSpan, now - octStart));
+    $("oct30-bar").style.width = `${(octElapsed / totalOctSpan) * 100}%`;
   }
 
-  let diff = Math.max(0, deadline - now);
-  const hours = Math.floor(diff/3600000);
-  const minutes = Math.floor((diff%3600000)/60000);
-  const seconds = Math.floor((diff%60000)/1000);
-  $("hours").textContent = pad(hours);
-  $("minutes").textContent = pad(minutes);
-  $("seconds").textContent = pad(seconds);
-  $("status").textContent = `Cuenta regresiva hacia las 6:00 p. m. · ${now.toLocaleDateString("es-PE",{weekday:"long",day:"numeric",month:"long"})}`;
-
-  const elapsed = Math.max(0, Math.min(12*3600000, now - start));
-  $("bar").style.width = `${Math.max(0, Math.min(12*3600000, elapsed))/(12*3600000)*100}%`;
-  $("heart").textContent = ["♡","♥","💗","♥"][Math.floor(now.getSeconds()/15)];
+  renderRevealSection();
 }
 
-const isAdmin = new URLSearchParams(location.search).get("admin")==="1" || location.hash==="#editar";
-if(isAdmin){
-  document.body.classList.add("admin-mode");
-  fetchAnswersFromCloud();
-  setInterval(fetchAnswersFromCloud, 8000);
-}
-$("add-question").addEventListener("click",addQuestion);
-$("reset-questions").addEventListener("click",restoreQuestions);
-$("export-page").addEventListener("click",exportPage);
-$("export-answers").addEventListener("click",exportAnswers);
-$("refresh-answers").addEventListener("click",()=>{ setAdminStatus("Sincronizando con la nube..."); fetchAnswersFromCloud(); });
+const isAdmin = new URLSearchParams(location.search).get("admin")==="1";
+if(isAdmin){ document.body.classList.add("admin-mode"); }
 
-tick(); renderEditor(); renderPublicQuestions(); renderSavedAnswers();
-setInterval(tick,1000);
-setInterval(renderPublicQuestions,30000);
+$("refresh-answers")?.addEventListener("click",()=>{ fetchAnswersFromCloud(); });
+
+tick();
+renderPublicQuestions();
+renderSavedAnswers();
+fetchAnswersFromCloud();
+
+setInterval(tick, 1000);
+setInterval(fetchAnswersFromCloud, 10000);
 </script>
 </body>
 </html>
