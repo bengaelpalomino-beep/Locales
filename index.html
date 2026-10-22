@@ -3,156 +3,1148 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para Angie 🌌</title>
+<meta name="theme-color" content="#0f0821">
+<title>22 Años de Luz | Para Angie 💜</title>
 <style>
-  :root {
-    --bg-color: #05050a;
-    --text-glow: #e0e7ff;
-    --accent: #818cf8;
-  }
-  
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  
-  body, html {
-    width: 100%; height: 100%;
-    background-color: var(--bg-color);
-    font-family: "Georgia", serif;
-    color: #e2e8f0;
-    overflow-x: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+:root {
+  --bg-deep: #0b061a;
+  --bg-mid: #1a0f36;
+  --bg-glow: #3b1c5e;
+  --rose: #ff8fb1;
+  --rose-deep: #e05380;
+  --gold: #ffe2a8;
+  --gold-bright: #ffd166;
+  --cyan: #67e8f9;
+  --mint: #a7f3d0;
+  --cream: #fff9f6;
+  --muted: #d5c7e8;
+  --env-body: #281749;
+  --env-flap: #382063;
+  --env-pocket: #311c57;
+  --paper: #fffaf5;
+  --paper-text: #2a183b;
+}
 
-  /* Fondo del Universo Animado */
-  .stars, .twinkling {
-    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    width: 100%; height: 100%; display: block;
-  }
-  .stars {
-    background: #000 url('https://cdn.pixabay.com/photo/2016/01/27/15/25/space-1164402_960_720.jpg') repeat top center;
-    z-index: 0;
-    opacity: 0.4;
-  }
-  .twinkling {
-    background: transparent url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/twinkling.png') repeat top center;
-    z-index: 1;
-    animation: move-twink-back 200s linear infinite;
-    opacity: 0.3;
-  }
-  @keyframes move-twink-back {
-    from { background-position: 0 0; }
-    to { background-position: -10000px 5000px; }
-  }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* Contenedor de la Carta (Glassmorphism) */
-  .letter-container {
-    position: relative;
-    z-index: 10;
-    width: 90%;
-    max-width: 650px;
-    background: rgba(15, 23, 42, 0.4);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 40px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.05);
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeUp 1.5s ease forwards 0.5s;
-    max-height: 85vh;
-    overflow-y: auto;
-  }
+body {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at 50% 0%, var(--bg-glow) 0%, var(--bg-mid) 42%, var(--bg-deep) 85%);
+  color: var(--cream);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
 
-  /* Scrollbar estético */
-  .letter-container::-webkit-scrollbar { width: 6px; }
-  .letter-container::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
+/* Fondo estelar sutil */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+  background-image:
+    radial-gradient(2px 2px at 15% 25%, #fff 45%, transparent 55%),
+    radial-gradient(1.5px 1.5px at 75% 18%, var(--gold) 45%, transparent 55%),
+    radial-gradient(2px 2px at 84% 70%, #fff 45%, transparent 55%),
+    radial-gradient(1.5px 1.5px at 30% 80%, var(--rose) 45%, transparent 55%),
+    radial-gradient(1px 1px at 55% 48%, var(--cyan) 45%, transparent 55%);
+  background-size: 210px 190px, 260px 230px, 300px 250px, 190px 220px, 240px 240px;
+}
 
-  @keyframes fadeUp {
-    to { opacity: 1; transform: translateY(0); }
-  }
+.container {
+  position: relative;
+  z-index: 2;
+  width: min(1080px, 92%);
+  margin: 0 auto;
+  padding: 40px 0 70px;
+}
 
-  /* Tipografía */
-  h1 {
-    font-size: 2.2rem;
-    font-weight: normal;
-    color: var(--text-glow);
-    text-align: center;
-    margin-bottom: 30px;
-    letter-spacing: 2px;
-    text-shadow: 0 0 15px rgba(129, 140, 248, 0.6);
-  }
+/* ENCABEZADO */
+.hero {
+  text-align: center;
+  margin-bottom: 34px;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: rgba(255, 226, 168, 0.1);
+  border: 1px solid rgba(255, 226, 168, 0.3);
+  color: var(--gold);
+  font-size: 0.76rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.hero h1 {
+  font-size: clamp(2.3rem, 6vw, 4.3rem);
+  line-height: 1.08;
+  margin: 16px 0 12px;
+  color: #fff;
+  text-shadow: 0 0 30px rgba(255, 143, 177, 0.4);
+}
+.hero h1 span {
+  background: linear-gradient(120deg, var(--rose), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero p {
+  max-width: 670px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
 
-  p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin-bottom: 20px;
-    text-align: justify;
-    color: #cbd5e1;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  }
+/* TARJETA DE CONTADOR (30 DE OCTUBRE) */
+.countdown-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 226, 168, 0.28);
+  border-radius: 28px;
+  padding: clamp(22px, 4vw, 38px);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 24px 70px rgba(5, 2, 14, 0.65);
+  margin-bottom: 42px;
+  position: relative;
+  overflow: hidden;
+}
+.countdown-header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+.countdown-header .tag {
+  color: var(--gold);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.countdown-header h2 {
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  margin-top: 6px;
+  color: #fff;
+}
 
-  .highlight {
-    color: var(--text-glow);
-    font-weight: bold;
-    text-shadow: 0 0 8px rgba(255,255,255,0.4);
-  }
+.timer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  max-width: 680px;
+  margin: 20px auto 16px;
+}
+.time-box {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 18px 8px;
+  text-align: center;
+}
+.time-num {
+  display: block;
+  font-size: clamp(2rem, 6vw, 3.4rem);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.05;
+  color: #fff;
+  text-shadow: 0 0 18px rgba(255, 143, 177, 0.35);
+}
+.time-label {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
 
-  .signature {
-    margin-top: 40px;
-    text-align: right;
-    font-style: italic;
-    color: var(--accent);
-  }
+/* Línea de Electrocardiograma (ECG) para la futura Cardióloga */
+.ecg-wrap {
+  max-width: 460px;
+  margin: 14px auto 8px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ecg-svg {
+  width: 100%;
+  height: 36px;
+  stroke: var(--rose);
+  stroke-width: 2.2;
+  fill: none;
+  filter: drop-shadow(0 0 6px var(--rose));
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  animation: ecgPulse 3.2s linear infinite;
+}
+@keyframes ecgPulse {
+  0% { stroke-dashoffset: 500; opacity: 0.3; }
+  50% { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: -500; opacity: 0.3; }
+}
 
-  .necklace-hint {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 0.9rem;
-    color: rgba(203, 213, 225, 0.6);
-    border-top: 1px solid rgba(255,255,255,0.1);
-    padding-top: 20px;
-  }
+.countdown-status {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
 
-  @media (max-width: 600px) {
-    .letter-container { padding: 25px; }
-    h1 { font-size: 1.8rem; }
-    p { font-size: 1rem; line-height: 1.6; }
-  }
+/* SECCIÓN DE LAS 22 CARTAS */
+.letters-section {
+  margin: 44px 0;
+}
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.section-head h2 {
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  color: #fff;
+}
+.section-head p {
+  color: var(--muted);
+  max-width: 620px;
+  font-size: 0.98rem;
+  margin-top: 4px;
+}
+.progress-pill {
+  background: rgba(255, 143, 177, 0.14);
+  border: 1px solid rgba(255, 143, 177, 0.4);
+  color: var(--gold);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* GRILLA DE SOBRES 3D */
+.envelopes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
+  gap: 24px 18px;
+  margin-top: 20px;
+}
+
+.envelope-wrapper {
+  perspective: 900px;
+  cursor: pointer;
+  user-select: none;
+  padding-top: 14px;
+}
+
+.envelope {
+  position: relative;
+  width: 100%;
+  height: 138px;
+  background: var(--env-body);
+  border-radius: 0 0 14px 14px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.envelope-wrapper:hover .envelope {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 38px rgba(255, 143, 177, 0.22);
+  border-color: rgba(255, 143, 177, 0.5);
+}
+
+/* Hoja de papel interior que sube al abrir */
+.env-letter {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 8px;
+  height: 112px;
+  background: linear-gradient(180deg, #fffdf9 0%, #f7ebfa 100%);
+  border-radius: 8px;
+  padding: 12px 10px;
+  color: var(--paper-text);
+  z-index: 2;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.env-letter-age {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--rose-deep);
+}
+.env-letter-title {
+  font-size: 0.84rem;
+  font-weight: 700;
+  margin-top: 4px;
+  line-height: 1.25;
+  color: #29123a;
+}
+
+/* Bolsillo frontal del sobre */
+.env-pocket {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: 0 0 14px 14px;
+  overflow: hidden;
+  pointer-events: none;
+}
+.env-pocket::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(155deg, rgba(64, 35, 112, 0.96) 0%, rgba(39, 20, 74, 0.98) 100%);
+  clip-path: polygon(0 0, 50% 44%, 100% 0, 100% 100%, 0 100%);
+}
+.env-pocket::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.04);
+  clip-path: polygon(0 100%, 50% 48%, 100% 100%);
+}
+
+/* Solapa superior móvil (3D Flap) */
+.env-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 78px;
+  background: linear-gradient(180deg, #4b2b82 0%, #371e63 100%);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.15s;
+  z-index: 4;
+  border-top: 1px solid rgba(255, 226, 168, 0.35);
+}
+
+/* Sello de cera con el número de la carta */
+.wax-seal {
+  position: absolute;
+  top: 48px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ff9ebb, #c92a62 75%, #8f1640 100%);
+  border: 2px solid rgba(255, 226, 168, 0.75);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), 0 0 12px rgba(255, 143, 177, 0.4);
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #fff;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+/* Etiqueta inferior del sobre */
+.env-caption {
+  position: absolute;
+  bottom: 9px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 4;
+  font-size: 0.73rem;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  font-weight: 600;
+  pointer-events: none;
+}
+
+/* Estado cuando el sobre se está abriendo o ya fue leído */
+.envelope.is-opening .env-flap,
+.envelope.is-opened .env-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+.envelope.is-opening .env-letter {
+  transform: translateY(-48px);
+}
+.envelope.is-opened .env-letter {
+  transform: translateY(-22px);
+}
+.envelope.is-opening .wax-seal {
+  transform: translate(-50%, -50%) scale(0.2);
+  opacity: 0;
+}
+.envelope.is-opened {
+  border-color: rgba(167, 243, 208, 0.45);
+}
+.envelope.is-opened .wax-seal {
+  background: radial-gradient(circle at 30% 30%, #6ee7b7, #059669 80%);
+  border-color: #fff;
+}
+
+/* MODAL DE LECTURA DE CARTA */
+.letter-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(6, 3, 15, 0.84);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.32s ease;
+}
+.letter-modal-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.letter-sheet {
+  width: min(650px, 100%);
+  max-height: 88vh;
+  background: linear-gradient(165deg, #fffdf9 0%, #f9f0ff 100%);
+  color: var(--paper-text);
+  border-radius: 24px;
+  padding: clamp(24px, 5vw, 42px);
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 226, 168, 0.5);
+  position: relative;
+  overflow-y: auto;
+  transform: translateY(34px) scale(0.94);
+  transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.letter-modal-backdrop.active .letter-sheet {
+  transform: translateY(0) scale(1);
+}
+
+.sheet-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(42, 24, 59, 0.12);
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+}
+.sheet-badge {
+  background: #2b1748;
+  color: var(--gold);
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.close-modal-btn {
+  background: rgba(42, 24, 59, 0.08);
+  border: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  color: #2b1748;
+  cursor: pointer;
+  font-weight: 800;
+}
+.close-modal-btn:hover {
+  background: rgba(224, 83, 128, 0.2);
+}
+
+.sheet-title {
+  font-size: clamp(1.45rem, 3.5vw, 1.95rem);
+  color: #1f0d33;
+  margin-bottom: 6px;
+  font-family: "Georgia", serif;
+}
+.sheet-subtitle {
+  font-size: 0.88rem;
+  color: #7a5af8;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+.sheet-body p {
+  font-family: "Georgia", serif;
+  font-size: 1.06rem;
+  line-height: 1.82;
+  color: #2d1b40;
+  margin-bottom: 16px;
+  text-align: justify;
+}
+.sheet-sign {
+  margin-top: 22px;
+  text-align: right;
+  font-style: italic;
+  font-family: "Georgia", serif;
+  color: #6b21a8;
+  font-weight: 700;
+}
+
+.sheet-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: 26px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(42, 24, 59, 0.12);
+}
+.nav-btn {
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(43, 23, 72, 0.2);
+  background: #fff;
+  color: #2b1748;
+  font-weight: 700;
+  font-size: 0.86rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.nav-btn:hover:not(:disabled) {
+  background: #2b1748;
+  color: #fff;
+}
+.nav-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* DOS RECTÁNGULOS INFERIORES (CHILI'S + MEDICINA IA) */
+.bottom-portals {
+  margin-top: 52px;
+}
+.portals-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+.portal-rect {
+  border-radius: 24px;
+  padding: clamp(22px, 3.5vw, 32px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(12px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.portal-rect:hover {
+  transform: translateY(-4px);
+}
+
+/* Rectángulo 1: Chili's */
+.portal-chilis {
+  background: linear-gradient(155deg, rgba(66, 22, 59, 0.85), rgba(28, 12, 43, 0.92));
+  border: 1px solid rgba(255, 143, 177, 0.45);
+  box-shadow: 0 18px 45px rgba(255, 143, 177, 0.12);
+}
+/* Rectángulo 2: Medicina IA */
+.portal-medai {
+  background: linear-gradient(155deg, rgba(10, 37, 64, 0.88), rgba(15, 14, 42, 0.95));
+  border: 1px solid rgba(103, 232, 249, 0.45);
+  box-shadow: 0 18px 45px rgba(103, 232, 249, 0.12);
+}
+
+.rect-badge {
+  display: inline-block;
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  color: var(--gold);
+}
+.portal-medai .rect-badge {
+  color: var(--cyan);
+}
+.rect-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.rect-desc {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+.rect-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding: 13px 20px;
+  border-radius: 14px;
+  background: linear-gradient(120deg, var(--rose), var(--gold));
+  color: #26102e;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.rect-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(255, 143, 177, 0.4);
+}
+.portal-medai .rect-btn {
+  background: linear-gradient(120deg, var(--cyan), var(--mint));
+  color: #051929;
+}
+.portal-medai .rect-btn:hover {
+  box-shadow: 0 10px 24px rgba(103, 232, 249, 0.35);
+}
+
+footer {
+  text-align: center;
+  margin-top: 50px;
+  color: rgba(213, 199, 232, 0.65);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 760px) {
+  .portals-grid { grid-template-columns: 1fr; }
+  .timer-grid { gap: 8px; }
+  .envelopes-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 18px 12px; }
+}
 </style>
 </head>
 <body>
 
-  <!-- Capas de fondo animado -->
-  <div class="stars"></div>
-  <div class="twinkling"></div>
+<main class="container">
+  <!-- HERO -->
+  <header class="hero">
+    <div class="eyebrow">✨ 22 Cartas · 22 Años de Historia ✨</div>
+    <h1>Para ti, <span>Angie</span> 💜</h1>
+    <p>Cada año de tu vida ha moldeado a la mujer y a la futura cirujana cardióloga que tanto admiro. Abre cada sobre en orden mientras el reloj avanza hacia nuestro encuentro del <strong>30 de octubre</strong>.</p>
+  </header>
 
-  <!-- Carta -->
-  <div class="letter-container">
-    <h1>Para Angie ✨</h1>
-    
-    <p>Dicen que el universo está en constante expansión, pero a veces siento que no existe cavidad en él lo suficientemente vasta para sostener o abarcar todo el amor y la gratitud que siento por ti.</p>
-    
-    <p>Desde que llegué, tú y tu familia han sido mi refugio. Han hecho por mí cosas que nunca tendré cómo pagar. Sin embargo, sé que en el camino nuestras líneas se borraron. Cometimos errores pesados, tomamos decisiones que oscurecieron nuestra paz, y sé que he fallado en cosas de las que debí arrepentirme mucho antes. <span class="highlight">Te pido un perdón profundo y sincero por mi parte en todo esto.</span></p>
-    
-    <p>Este miércoles, hemos decidido ser valientes. Vamos a dar un paso dificilísimo para limpiar nuestras vidas y empezar de cero frente a Dios. Sé que el proceso asusta. Sé que la culpa a veces aísla y hace que uno se sienta incomprendido o solo.</p>
-    
-    <p>Escribo esto junto a este obsequio para hacerte una promesa: <span class="highlight">no tienes que batallar en esta tormenta sola.</span></p>
-    
-    <p>No importa lo que el arrepentimiento signifique para nosotros a partir del jueves. No importa si debemos reconstruir todo desde las cenizas, si debemos tomar distancia temporal, o si nuestro estado cambia. Mi apoyo hacia ti es incondicional. Estaré aquí para sostenerte si me lo permites, para escucharte cuando el proceso duela, y para recordarte la luz inmensa que tienes cuando tú misma no puedas verla.</p>
-    
-    <p>Te quiero, Angie. Te quiero lo suficiente como para priorizar tu paz y tu sanación por encima de cualquier otra cosa en este mundo. No estás sola. Aquí estoy.</p>
-    
-    <div class="signature">
-      Con todo mi amor y apoyo incondicional,<br>
-      Benjamín
+  <!-- CONTADOR HASTA EL 30 DE OCTUBRE DE 2026 -->
+  <section class="countdown-card" aria-label="Cuenta regresiva al 30 de octubre de 2026">
+    <div class="countdown-header">
+      <div class="tag">🩺 Cuenta Regresiva Oficial · Lanzamiento & Cita Especial</div>
+      <h2>Rumbo al 30 de Octubre de 2026</h2>
     </div>
 
-    <div class="necklace-hint">
-      Un pequeño símbolo para recordarte que, incluso en la inmensidad del espacio, tu luz es importante.
+    <div class="timer-grid" role="timer">
+      <div class="time-box">
+        <span class="time-num" id="cd-days">00</span>
+        <span class="time-label">Días</span>
+      </div>
+      <div class="time-box">
+        <span class="time-num" id="cd-hours">00</span>
+        <span class="time-label">Horas</span>
+      </div>
+      <div class="time-box">
+        <span class="time-num" id="cd-minutes">00</span>
+        <span class="time-label">Minutos</span>
+      </div>
+      <div class="time-box">
+        <span class="time-num" id="cd-seconds">00</span>
+        <span class="time-label">Segundos</span>
+      </div>
+    </div>
+
+    <!-- Pulso ECG en honor a su vocación en Cardiología -->
+    <div class="ecg-wrap" aria-hidden="true">
+      <svg class="ecg-svg" viewBox="0 0 500 50">
+        <path d="M0,25 L140,25 L155,15 L170,25 L190,25 L200,38 L212,4 L224,46 L236,25 L255,12 L272,25 L500,25" />
+      </svg>
+    </div>
+
+    <p class="countdown-status" id="cd-status">Sincronizando latidos hasta el viernes 30 de octubre de 2026…</p>
+  </section>
+
+  <!-- LAS 22 CARTAS -->
+  <section class="letters-section">
+    <div class="section-head">
+      <div>
+        <h2>💌 Las 22 Cartas de tu Vida</h2>
+        <p>Toca cualquier sobre para romper el sello y abrir la carta correspondiente a cada año que has cumplido.</p>
+      </div>
+      <div class="progress-pill" id="read-progress">0 / 22 cartas leídas</div>
+    </div>
+
+    <div class="envelopes-grid" id="envelopes-grid"></div>
+  </section>
+
+  <!-- DOS RECTÁNGULOS INFERIORES: CHILI'S Y PROYECTO MEDICINA IA -->
+  <section class="bottom-portals">
+    <div class="portals-grid">
+      <!-- RECTÁNGULO 1: CHILI'S -->
+      <article class="portal-rect portal-chilis">
+        <div>
+          <span class="rect-badge">📍 Coordenada de Encuentro · 30 Oct 2026</span>
+          <h3 class="rect-title">Nuestra Cita en Chili's 🌶️💜</h3>
+          <p class="rect-desc">El punto donde nos veremos este 30 de octubre para celebrar tu vida, conversar sin prisas y entregarte tus sorpresas en persona.</p>
+        </div>
+        <a class="rect-btn" href="https://share.google/GHHQ4guh7k9dxRQu5" target="_blank" rel="noopener noreferrer">
+          🗺️ Ver Ubicación Exacta de Chili's
+        </a>
+      </article>
+
+      <!-- RECTÁNGULO 2: PROYECTO MEDICINA IA (NOMBRE ASTUTO) -->
+      <article class="portal-rect portal-medai">
+        <div>
+          <span class="rect-badge">🫀 Lanzamiento Oficial · 30 Oct 2026</span>
+          <h3 class="rect-title">Proyecto A.N.G.I.E. // KARDIA-HUD 3D</h3>
+          <p class="rect-desc"><strong>A</strong>sistente de <strong>N</strong>avegación <strong>G</strong>uiada e <strong>I</strong>nteligencia <strong>E</strong>specializada: tu laboratorio holográfico inspirado en J.A.R.V.I.S. para explorar anatomía, vasos sanguíneos, corazón y cirugía.</p>
+        </div>
+        <a class="rect-btn" id="medai-portal-btn" href="#medai-info">
+          🧬 Descubrir A.N.G.I.E. KARDIA-HUD
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <footer>Hecho línea por línea con todo mi cariño, admiración y respeto por tu paz · Benjamín ✨</footer>
+</main>
+
+<!-- MODAL DE LECTURA DE CARTA -->
+<div class="letter-modal-backdrop" id="letter-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="letter-sheet">
+    <div class="sheet-top">
+      <span class="sheet-badge" id="modal-badge">Carta #1</span>
+      <button class="close-modal-btn" id="close-modal" aria-label="Cerrar carta">✕</button>
+    </div>
+    <h3 class="sheet-title" id="modal-title">Título de la Carta</h3>
+    <div class="sheet-subtitle" id="modal-subtitle">Subtítulo</div>
+    <div class="sheet-body" id="modal-body"></div>
+    <div class="sheet-sign">Con cariño incondicional, Benjamín 💜</div>
+
+    <div class="sheet-nav">
+      <button class="nav-btn" id="prev-letter">← Año anterior</button>
+      <button class="nav-btn" id="next-letter">Siguiente año →</button>
     </div>
   </div>
+</div>
 
+<script>
+// ============================================================================
+// 1. BASE DE DATOS DE LAS 22 CARTAS (EDADES 1 A 22 DE ANGIE)
+// ============================================================================
+const ANGIE_LETTERS = [
+  {
+    age: 1,
+    shortTitle: "El milagro de tu llegada",
+    fullTitle: "Año 1 · Cuando el mundo recibió tu luz",
+    subtitle: "El inicio de una bendición para tu familia",
+    paragraphs: [
+      "Aunque en aquel entonces nuestros caminos aún estaban a años de cruzarse, me basta conocer a tu familia hoy para entender lo que significó tu primer año de vida.",
+      "Llegaste a este mundo un 16 de agosto para unir más a los tuyos, para llenar tu hogar de ternura y convertirte en una bendición inmensa. Tu primer latido ya traía consigo un propósito gigante que años después transformaría vidas, incluida la mía."
+    ]
+  },
+  {
+    age: 2,
+    shortTitle: "Tus primeros pasos",
+    fullTitle: "Año 2 · Pequeños pasos, gran corazón",
+    subtitle: "Descubriendo el mundo",
+    paragraphs: [
+      "A los dos años dabas tus primeros pasos firmes y pronunciabas tus primeras palabras rodeada del amor de tu familia.",
+      "Me gusta imaginar la alegría que dabas en casa con cada ocurrencia. Desde muy pequeñita ya tenías esa chispa tan tuya: dulce, curiosa y llena de vida."
+    ]
+  },
+  {
+    age: 3,
+    shortTitle: "La risa en tu hogar",
+    fullTitle: "Año 3 · El refugio familiar",
+    subtitle: "Crecimiento y ternura",
+    paragraphs: [
+      "A tus tres años eras el centro de las sonrisas en tu casa. Ese calor de hogar en el que creciste explica por qué tú y tu familia tienen una capacidad tan noble de acoger y proteger a quienes quieren.",
+      "Esa bondad que años más tarde me abriría las puertas cuando más lo necesité ya se estaba sembrando en ti."
+    ]
+  },
+  {
+    age: 4,
+    shortTitle: "Curiosidad infinita",
+    fullTitle: "Año 4 · La niña que preguntaba el porqué",
+    subtitle: "La semilla de una mente brillante",
+    paragraphs: [
+      "A los cuatro años el mundo es un misterio gigante. Esa curiosidad infantil por entender cómo funcionan las cosas fue el primer destello de la estudiante dedicada e inteligente en la que te convertirías.",
+      "Dios ya estaba preparando tu mente y tu sensibilidad para grandes cosas."
+    ]
+  },
+  {
+    age: 5,
+    shortTitle: "Nobleza desde pequeña",
+    fullTitle: "Año 5 · Cinco años de dulzura",
+    subtitle: "Aprendiendo a compartir y cuidar",
+    paragraphs: [
+      "A los cinco años empezabas a dar tus primeros pasos escolares. Aunque yo no estuve ahí para verlo, sé que siempre tuviste un corazón empático, de esos que no soportan ver triste a alguien a su alrededor.",
+      "Crecías rodeada del cariño de esas personas de tu familia que marcaron tu alma para siempre."
+    ]
+  },
+  {
+    age: 6,
+    shortTitle: "Primeros cuadernos",
+    fullTitle: "Año 6 · El comienzo de tu etapa escolar",
+    subtitle: "Disciplina y sueños tempranos",
+    paragraphs: [
+      "A los seis años aprendías a escribir tus primeras frases completas sin imaginar que, años después, esa misma mano escribiría historias clínicas, apuntes de anatomía y trazos quirúrgicos.",
+      "Cada etapa de tu infancia construyó los cimientos de tu fortaleza."
+    ]
+  },
+  {
+    age: 7,
+    shortTitle: "Un corazón valiente",
+    fullTitle: "Año 7 · La fuerza silenciosa",
+    subtitle: "La luz antes de las pruebas",
+    paragraphs: [
+      "A tus siete años tu sonrisa iluminaba a tu familia, pero también se acercaban pruebas de salud que pondrían a prueba tu valentía a muy corta edad.",
+      "Incluso siendo tan pequeña, dentro de ti había una resiliencia admirable."
+    ]
+  },
+  {
+    age: 8,
+    shortTitle: "El latido que creó a una doctora",
+    fullTitle: "Año 8 · El corazón que sanó para sanar a otros",
+    subtitle: "El origen de tu sueño en Cirugía Cardiológica",
+    paragraphs: [
+      "Sé que durante tu niñez pasaste por problemas en el corazón que asustaron a los tuyos y te hicieron conocer de cerca lo que es ser paciente.",
+      "Pero cuando tu corazón mejoró, ocurrió el milagro más hermoso: transformaste esa prueba en tu vocación de vida. Ahí nació la futura Doctora y Cirujana en Cardiología. Tu propio corazón sanado decidió que algún día salvaría el corazón de los demás."
+    ]
+  },
+  {
+    age: 9,
+    shortTitle: "No estabas sola en tu dolor",
+    fullTitle: "Año 9 · Un abrazo para la niña de 9 años",
+    subtitle: "Acompañándote en lo que nunca debió pasarte",
+    paragraphs: [
+      "Sé que entre los 9 y 10 años te tocó vivir algo profundamente injusto: tu cuerpo empezó a desarrollarse antes y hombres horribles en la calle te lanzaban piropos y miradas que te hacían sentir incómoda, vulnerable y con miedo.",
+      "Si pudiera viajar en el tiempo para cuidar a esa niña de 9 años, lo haría sin dudar. Te entiendo en ese dolor desde lo más profundo de mi alma porque yo también sufrí acoso y sé lo feo, confuso y solitario que se siente. Nunca tuviste la culpa de nada, Angie. Hoy abrazo esa herida contigo para que jamás vuelvas a sentirte desprotegida."
+    ]
+  },
+  {
+    age: 10,
+    shortTitle: "Tu dignidad intacta",
+    fullTitle: "Año 10 · Más fuerte que un mundo injusto",
+    subtitle: "Sanando la mirada hacia ti misma",
+    paragraphs: [
+      "A los 10 años seguías lidiando con esos comentarios desagradables de gente sin respeto, mientras tu corazón seguía fortaleciéndose.",
+      "Quiero recordarte hoy que tu valor, tu pureza y tu belleza real siempre estuvieron muy por encima de la maldad del mundo. Saliste adelante con una valentía que me hace admirarte el doble."
+    ]
+  },
+  {
+    age: 11,
+    shortTitle: "A un paso de encontrarnos",
+    fullTitle: "Año 11 · El último año antes de cruzarnos",
+    subtitle: "Cerrando la primaria con el sueño médico vivo",
+    paragraphs: [
+      "A los 11 años cerrabas tu etapa de niña mientras tu meta de ser doctora cobraba cada vez más sentido en tu mente.",
+      "Sin saberlo, estábamos a solo unos meses de coincidir en el mismo salón de clases y cambiar nuestra historia para siempre."
+    ]
+  },
+  {
+    age: 12,
+    shortTitle: "Tu bautismo y nuestro salón",
+    fullTitle: "Año 12 · Convenios con Dios y 5 años juntos",
+    subtitle: "El año en que entraste a la Iglesia y te conocí en secundaria",
+    paragraphs: [
+      "¡Qué año tan inolvidable! A los 12 años diste el paso hermoso de bautizarte en La Iglesia de Jesucristo de los Santos de los Últimos Días, entregando tu corazón a Dios.",
+      "Y fue también a esta edad cuando te conocí en la secundaria. Ahí comenzó nuestra aventura de estudiar 5 años seguidos en los mismos salones. Ver tu rostro en clase se convirtió en mi parte favorita de ir al colegio."
+    ]
+  },
+  {
+    age: 13,
+    shortTitle: "Cuando me empezaste a gustar",
+    fullTitle: "Año 13 · El secreto mejor guardado del salón",
+    subtitle: "Conociéndonos de verdad",
+    paragraphs: [
+      "A los 13 años empezamos a conversar más, a compartir risas, tareas y momentos en el salón. Cuanto más te conocía, más me cautivaba tu forma de ser.",
+      "Fue aquí donde me empezaste a gustar de verdad, aunque me quedé completamente callado y nunca te dije nada por temor a arruinar nuestra amistad. Te quería en silencio desde mi carpeta."
+    ]
+  },
+  {
+    age: 14,
+    shortTitle: "Mañanas de Seminario",
+    fullTitle: "Año 14 · Tu enfoque espiritual (mayor que el mío jajaja)",
+    subtitle: "Asistiendo juntos a Seminario en la Iglesia",
+    paragraphs: [
+      "A los 14 años no solo compartíamos el colegio, sino que ambos empezamos a asistir a Seminario en la Iglesia.",
+      "Tengo que confesar con una sonrisa que tú estabas muchísimo más enfocada y aplicada en las escrituras que yo jajaja. Yo te miraba admirando tu fe, tu dedicación y cómo seguirías enamorándome día tras día sin que yo aún me atreviera a confesarlo."
+    ]
+  },
+  {
+    age: 15,
+    shortTitle: "Tus Quinceaños",
+    fullTitle: "Año 15 · La noche en que brillaste como nunca",
+    subtitle: "De compañera de salón a una señorita radiante",
+    paragraphs: [
+      "Llegaron tus 15 años y celebramos tus quinceaños. Recuerdo verte ese día y sentir que el tiempo se detenía por un segundo.",
+      "Ahí me di cuenta de que aquella niña que conocí a los 12 se estaba convirtiendo en una señorita aún más bella, por dentro y por fuera. Mi corazón ya sabía que eras alguien única en mi vida."
+    ]
+  },
+  {
+    age: 16,
+    shortTitle: "A través de la distancia",
+    fullTitle: "Año 16 · Pandemia, pantallas y tú en mi mente",
+    subtitle: "Cuando el mundo se detuvo pero mi cariño no",
+    paragraphs: [
+      "A tus 16 años llegó la pandemia. Las aulas quedaron vacías, el colegio pasó a las pantallas y nuestra relación se distanció un poco por las circunstancias.",
+      "Sin embargo, no hubo una sola semana en que no pensara en ti, en cómo estarías y en las ganas que tenía de volver a verte de cerca."
+    ]
+  },
+  {
+    age: 17,
+    shortTitle: "Medicina y tus pasteles",
+    fullTitle: "Año 17 · Graduación, vocación y tu repostería",
+    subtitle: "Viendo tus talentos florecer",
+    paragraphs: [
+      "Terminamos la secundaria (tú a tus 17 y yo con 16) y fue hermoso ver cómo tu esfuerzo empezaba a dar frutos. Tomaste con firmeza la decisión definitiva de estudiar Medicina.",
+      "Además, descubriste y perfeccionaste habilidades que me enamoraron aún más, como la repostería; hasta el día de hoy amo tus pasteles con locura. Fue una etapa de mucha cercanía donde también empezamos a tropezar con decisiones difíciles, pero nuestro lazo se hacía cada vez más profundo."
+    ]
+  },
+  {
+    age: 18,
+    shortTitle: "Caer, aprender y levantarnos",
+    fullTitle: "Año 18 · Nuestras sombras y nuestra fuerza",
+    subtitle: "Aprendiendo a ser más fuertes en medio de la debilidad",
+    paragraphs: [
+      "A los 18 años nos tocó enfrentar el peso de nuestras propias debilidades. Tomamos decisiones feas que rompieron convenios que ambos valorábamos y que por momentos nos llenaron de culpa.",
+      "Pero incluso habiendo fallado, aprendimos a no soltarnos en la tormenta. Esos errores nos enseñaron humildad y nos impulsaron al deseo sincero que hoy tenemos de limpiar nuestras vidas y mejorar juntos ante Dios."
+    ]
+  },
+  {
+    age: 19,
+    shortTitle: "Mi partida a México y tu valentía",
+    fullTitle: "Año 19 · Dos misiones a miles de kilómetros",
+    subtitle: "Yo en el campo misional y tú luchando por Medicina",
+    paragraphs: [
+      "Poco antes de que cumplieras 19 años, partí a servir mi misión en México, mientras tú te quedabas dando la batalla en tu carrera médica.",
+      "Aunque estábamos lejos, cada logro tuyo y cada paso que dabas hacia tu bata blanca me llenaba de orgullo. Nunca dejé de pedirle a Dios en mis oraciones que cuidara tu mente y tu corazón."
+    ]
+  },
+  {
+    age: 20,
+    shortTitle: "El abrazo que te debía",
+    fullTitle: "Año 20 · Perdón por no haber estado ahí",
+    subtitle: "Tu lucha contra la depresión mientras seguías estudiando",
+    paragraphs: [
+      "Cuando cumpliste 20 años yo seguía en la misión en México. Sabía que te estabas esforzando muchísimo en tus estudios, pero tiempo después supe que atravesaste un episodio muy duro de depresión.",
+      "No sabes cuánto lamento en el alma no haber estado cerca en ese momento para escucharte o sostenerte cuando sentías que todo pesaba demasiado. Por eso hoy te prometo que nunca más tendrás que cargar una noche oscura tú sola."
+    ]
+  },
+  {
+    age: 21,
+    shortTitle: "El regreso y la redención",
+    fullTitle: "Año 21 · Volver a vernos y decidir sanar",
+    subtitle: "Del tropiezo al arrepentimiento verdadero",
+    paragraphs: [
+      "Regresé de la misión justo antes de que cumplieras 21 años. Al reencontrarnos, tú y tu familia fueron un refugio increíble para mí desde que me mudé. Es verdad que volvimos a caer en malas decisiones, confundiendo el camino.",
+      "Pero a diferencia del pasado, esta vez tomamos la decisión más valiente de todas: arrepentirnos de corazón, buscar el perdón del Señor y elegir empezar de cero con las manos limpias."
+    ]
+  },
+  {
+    age: 22,
+    shortTitle: "16 de Agosto · Tu paz primero",
+    fullTitle: "Año 22 · La mujer y doctora que amo hoy",
+    subtitle: "16 de agosto · El amor que prefiere tu felicidad por encima de todo",
+    paragraphs: [
+      "Este 16 de agosto cumpliste 22 años. Mirar atrás, desde aquella niña que sanó del corazón y soñó con la cardiología hasta la mujer resiliente que eres hoy, hace que me enamore más de ti cada día.",
+      "Hoy mi amor por ti ha madurado: ya no busca presionarte ni pedirte etiquetas; hoy prefiero tu paz espiritual, tu sanación y tu felicidad más que nada en este universo. Pase lo que pase, aquí estaré siempre para apoyarte, mi futura cirujana cardióloga."
+    ]
+  }
+];
+
+// ============================================================================
+// 2. RENDERIZADO DE LOS 22 SOBRES Y ANIMACIÓN 3D DE APERTURA
+// ============================================================================
+const STORAGE_KEY_READ = "angie-22-letters-read-v1";
+let readLetters = loadReadState();
+let currentModalAge = 1;
+
+function loadReadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY_READ);
+    const parsed = raw ? JSON.parse(raw) : [];
+    return new Set(Array.isArray(parsed) ? parsed : []);
+  } catch (e) {
+    return new Set();
+  }
+}
+
+function saveReadState() {
+  try {
+    localStorage.setItem(STORAGE_KEY_READ, JSON.stringify([...readLetters]));
+  } catch (e) {}
+  updateProgressUI();
+}
+
+function updateProgressUI() {
+  const pill = document.getElementById("read-progress");
+  if (pill) {
+    pill.textContent = `${readLetters.size} / 22 cartas leídas`;
+  }
+}
+
+function renderEnvelopesGrid() {
+  const grid = document.getElementById("envelopes-grid");
+  grid.innerHTML = "";
+
+  ANGIE_LETTERS.forEach((item) => {
+    const isRead = readLetters.has(item.age);
+    const wrapper = document.createElement("div");
+    wrapper.className = "envelope-wrapper";
+    wrapper.setAttribute("role", "button");
+    wrapper.setAttribute("tabindex", "0");
+    wrapper.setAttribute("aria-label", `Abrir carta del año ${item.age}: ${item.shortTitle}`);
+
+    const env = document.createElement("div");
+    env.className = "envelope" + (isRead ? " is-opened" : "");
+    env.id = `env-${item.age}`;
+
+    env.innerHTML = `
+      <div class="env-flap"></div>
+      <div class="env-letter">
+        <span class="env-letter-age">Año ${item.age}</span>
+        <div class="env-letter-title">${item.shortTitle}</div>
+      </div>
+      <div class="env-pocket"></div>
+      <div class="wax-seal">${isRead ? "✓" : item.age}</div>
+      <div class="env-caption">${isRead ? "Carta abierta · Leer" : `Abrir Carta #${item.age}`}</div>
+    `;
+
+    const handleSelect = () => triggerEnvelopeOpen(item.age, env);
+    wrapper.addEventListener("click", handleSelect);
+    wrapper.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        handleSelect();
+      }
+    });
+
+    wrapper.appendChild(env);
+    grid.appendChild(wrapper);
+  });
+
+  updateProgressUI();
+}
+
+function triggerEnvelopeOpen(age, envElement) {
+  // Activa la animación 3D de abrir la solapa y sacar la hoja
+  envElement.classList.add("is-opening");
+
+  setTimeout(() => {
+    readLetters.add(age);
+    saveReadState();
+    envElement.classList.remove("is-opening");
+    envElement.classList.add("is-opened");
+    const seal = envElement.querySelector(".wax-seal");
+    const caption = envElement.querySelector(".env-caption");
+    if (seal) seal.textContent = "✓";
+    if (caption) caption.textContent = "Carta abierta · Leer";
+
+    openLetterModal(age);
+  }, 520);
+}
+
+// ============================================================================
+// 3. CONTROL DEL MODAL DE LECTURA
+// ============================================================================
+const modal = document.getElementById("letter-modal");
+const modalBadge = document.getElementById("modal-badge");
+const modalTitle = document.getElementById("modal-title");
+const modalSubtitle = document.getElementById("modal-subtitle");
+const modalBody = document.getElementById("modal-body");
+const prevBtn = document.getElementById("prev-letter");
+const nextBtn = document.getElementById("next-letter");
+
+function openLetterModal(age) {
+  const item = ANGIE_LETTERS.find((x) => x.age === age);
+  if (!item) return;
+  currentModalAge = age;
+
+  readLetters.add(age);
+  saveReadState();
+  const envEl = document.getElementById(`env-${age}`);
+  if (envEl) {
+    envEl.classList.add("is-opened");
+    const seal = envEl.querySelector(".wax-seal");
+    const caption = envEl.querySelector(".env-caption");
+    if (seal) seal.textContent = "✓";
+    if (caption) caption.textContent = "Carta abierta · Leer";
+  }
+
+  modalBadge.textContent = `Carta #${item.age} de 22 · Tus ${item.age} ${item.age === 1 ? "año" : "años"}`;
+  modalTitle.textContent = item.fullTitle;
+  modalSubtitle.textContent = item.subtitle;
+  modalBody.innerHTML = item.paragraphs.map((p) => `<p>${p}</p>`).join("");
+
+  prevBtn.disabled = age <= 1;
+  nextBtn.disabled = age >= 22;
+
+  modal.classList.add("active");
+}
+
+function closeLetterModal() {
+  modal.classList.remove("active");
+}
+
+document.getElementById("close-modal").addEventListener("click", closeLetterModal);
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) closeLetterModal();
+});
+window.addEventListener("keydown", (e) => {
+  if (!modal.classList.contains("active")) return;
+  if (e.key === "Escape") closeLetterModal();
+  if (e.key === "ArrowLeft" && currentModalAge > 1) openLetterModal(currentModalAge - 1);
+  if (e.key === "ArrowRight" && currentModalAge < 22) openLetterModal(currentModalAge + 1);
+});
+
+prevBtn.addEventListener("click", () => {
+  if (currentModalAge > 1) openLetterModal(currentModalAge - 1);
+});
+nextBtn.addEventListener("click", () => {
+  if (currentModalAge < 22) openLetterModal(currentModalAge + 1);
+});
+
+// ============================================================================
+// 4. CONTADOR EN RETROCESO HASTA EL 30 DE OCTUBRE DE 2026
+// ============================================================================
+const TARGET_DATE = new Date("2026-10-30T18:00:00-05:00");
+const pad = (n) => String(n).padStart(2, "0");
+
+function updateCountdown() {
+  const now = new Date();
+  const diff = Math.max(0, TARGET_DATE - now);
+
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff % 86400000) / 3600000);
+  const minutes = Math.floor((diff % 3600000) / 60000);
+  const seconds = Math.floor((diff % 60000) / 1000);
+
+  document.getElementById("cd-days").textContent = pad(days);
+  document.getElementById("cd-hours").textContent = pad(hours);
+  document.getElementById("cd-minutes").textContent = pad(minutes);
+  document.getElementById("cd-seconds").textContent = pad(seconds);
+
+  const statusEl = document.getElementById("cd-status");
+  if (diff <= 0) {
+    statusEl.innerHTML = "🎉 <strong>¡Llegó el 30 de Octubre de 2026!</strong> Hoy se presenta tu plataforma médica y nos vemos en Chili's 💜";
+  } else {
+    statusEl.textContent = "Cada segundo nos acerca a la presentación oficial de tu plataforma A.N.G.I.E. KARDIA-HUD y a nuestra cita en Chili's 🩺💜";
+  }
+}
+
+// Acción del botón de Medicina IA (puedes reemplazar el href cuando subas el otro repo)
+document.getElementById("medai-portal-btn").addEventListener("click", (e) => {
+  const href = e.currentTarget.getAttribute("href");
+  if (href === "#medai-info") {
+    e.preventDefault();
+    alert("🩺 A.N.G.I.E. // KARDIA-HUD 3D: Tu sistema holográfico de anatomía y cirugía cardiológica está calibrándose para su presentación oficial este 30 de octubre de 2026. 💜");
+  }
+});
+
+renderEnvelopesGrid();
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
 </body>
 </html>
